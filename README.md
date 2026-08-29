@@ -1,42 +1,131 @@
-# sv
+# Portofolio — Rizky Juniardi
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Website portofolio pribadi yang dibangun menggunakan **SvelteKit (Svelte 5 Runes)**, **Tailwind CSS v4**, dan ditargetkan untuk **Cloudflare Workers**.
 
-## Creating a project
+---
 
-If you're seeing this, you've probably already done this step. Congrats!
+## ✨ Fitur
 
-```sh
-# create a new project
-npx sv create my-app
+- **⚡ Svelte 5 Native**: Menggunakan Svelte 5 Runes (`$state`, `$derived`, `$props`, `$effect`, `{#snippet}`) secara menyeluruh.
+- **🎨 Tema Gelap/Terang/Sistem**: Pengaturan tema otomatis tersinkronisasi dengan preferensi browser/sistem dan localStorage tanpa flicker saat reload.
+- **💼 Katalog & Filter Proyek**:
+  - Filter kategori proyek (Program, Publikasi, dll).
+  - Integrasi thumbnail otomatis OpenGraph GitHub repository.
+  - Kartu proyek dengan deskripsi interaktif *expand/collapse*.
+- **📜 Pratinjau Sertifikasi**:
+  - Modal lightbox sertifikasi dengan fitur zoom (mouse wheel / shortcut keyboard / tombol), pan/drag, serta double-click/double-tap zoom.
+- **📥 Tombol Unduh CV**:
+  - Download non-blocking dengan animasi transisi Svelte 5 presisi (360ms).
+  - Mendukung Modern File System Access API (`showSaveFilePicker`) dengan fallback URL direct download.
+- **🧭 Daftar Isi Dinamis (TOC)**:
+  - Pelacakan posisi scroll heading secara real-time pada halaman Tentang (`/about`).
+- **🎯 Back-to-Top**:
+  - Tombol kembali ke atas dengan indikator persentase posisi scroll halaman secara dinamis.
+- **🤖 LLM & SEO Ready**:
+  - Endpoint `/llms.txt` berisi ringkasan profil, proyek, dan keahlian untuk agen AI.
+  - Skema terstruktur Schema.org (`Person`) dan OpenGraph Meta Tags via `svelte-meta-tags`.
+  - Generator `/sitemap.xml` dan `/robots.txt` berbasis endpoint server.
+
+---
+
+## 🛠️ Stack Teknologi
+
+| Kategori | Dependensi / Tool |
+| :--- | :--- |
+| **Framework** | SvelteKit (`@sveltejs/kit`), Svelte 5 (`svelte`) |
+| **Adapter** | Cloudflare Workers (`@sveltejs/adapter-cloudflare`) |
+| **Styling** | Tailwind CSS v4 (`tailwindcss`, `@tailwindcss/vite`, `@tailwindcss/typography`, `@tailwindcss/forms`) |
+| **Icons** | `@iconify/svelte`, `lucide-svelte` |
+| **Tipografi** | Satoshi (Fontshare), `@fontsource-variable/inconsolata` |
+| **Optimasi Gambar** | `@sveltejs/enhanced-img` |
+| **SEO** | `svelte-meta-tags` |
+| **HTML Parser** | `node-html-parser` (untuk crawler GitHub OpenGraph) |
+| **Runtime & Tooling** | Bun, TypeScript, ESLint, Prettier, Wrangler |
+
+---
+
+## 📂 Struktur Direktori (`src/`)
+
+```
+src/
+├── app.d.ts                     # Deklarasi Cloudflare Platform bindings (env, ctx, caches, cf)
+├── app.html                     # HTML root template dengan inline script inisialisasi tema
+├── hooks.server.ts              # SvelteKit server handle hook untuk injeksi judul aplikasi
+│
+├── lib/
+│   ├── types.ts                 # Definisi tipe data & antarmuka TypeScript
+│   ├── config.ts & index.ts     # Barrel export module library
+│   │
+│   ├── data/                    # Sumber data utama website
+│   │   ├── site.ts              # Konfigurasi situs (penulis, navigasi, footer social links)
+│   │   ├── projects.ts          # Data proyek dan publikasi ilmiah
+│   │   ├── experience.ts        # Data pengalaman riset dan riwayat pendidikan
+│   │   ├── certificates.ts      # Data sertifikasi kompetensi (BNSP)
+│   │   ├── tools.ts             # Data alat dan teknologi yang dikuasai
+│   │   ├── profile.ts           # Data aktivitas terkini, learning track, dan milestone
+│   │   └── quotes.ts            # Data kutipan teks lokal
+│   │
+│   ├── state/
+│   │   └── theme.svelte.ts      # State reaktif manajemen tema Svelte 5
+│   │
+│   ├── server/
+│   │   └── github.ts            # Logika server-side untuk parsing OpenGraph image GitHub
+│   │
+│   ├── components/
+│   │   ├── ui/                  # Komponen UI dasar (Button, CvDownloadButton, Icon, Card, Label, Quote, dll)
+│   │   └── layout/              # Komponen tata letak (Header, Footer, Section, TOC)
+│   │
+│   └── features/
+│       ├── projects/            # Komponen ProjectCard
+│       ├── certificates/        # Komponen CertificateList dan CertificateModal
+│       ├── timeline/            # Komponen Timeline
+│       └── tools/               # Komponen ToolSection
+│
+└── routes/
+    ├── layout.css               # Definisi theme tokens Tailwind CSS v4 & custom CSS
+    ├── +layout.svelte           # Root layout dengan Schema.org JSON-LD & Header/Footer
+    ├── +layout.server.ts        # Server load function untuk enrich thumbnail proyek
+    ├── +layout.ts               # Konfigurasi prerender = true
+    ├── +error.svelte            # Halaman penanganan error (404/500)
+    ├── +page.svelte             # Halaman Beranda
+    ├── about/+page.svelte       # Halaman Tentang Saya
+    ├── projects/+page.svelte    # Halaman Katalog Proyek
+    ├── api/cv/+server.ts        # Endpoint pengunduhan berkas PDF CV
+    ├── llms.txt/+server.ts      # Endpoint ringkasan untuk LLM/AI
+    ├── robots.txt/+server.ts    # Endpoint robots.txt
+    └── sitemap.xml/+server.ts   # Endpoint sitemap.xml
 ```
 
-To recreate this project with the same configuration:
+---
 
-```sh
-# recreate this project
-bun x sv@0.17.0 create --template minimal --types ts --add prettier eslint tailwindcss="plugins:typography,forms" sveltekit-adapter="adapter:cloudflare+cfTarget:workers" ai-tools="ide:other" --install bun portofolio
+## 🚀 Menjalankan Proyek
+
+### 1. Instalasi Dependensi
+```bash
+bun install
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+### 2. Development Server
+```bash
+bun run dev
 ```
 
-## Building
+### 3. Pemeriksaan Tipe & Linting
+```bash
+# Validasi tipe data TypeScript & Svelte
+bun run check
 
-To create a production version of your app:
-
-```sh
-npm run build
+# Linter & Formatter
+bun run lint
+bun run format
 ```
 
-You can preview the production build with `npm run preview`.
+### 4. Build
+```bash
+bun run build
+```
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+### 5. Preview Hasil Build
+```bash
+bun run preview
+```
