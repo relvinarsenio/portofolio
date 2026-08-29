@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <!-- Dark Minimalist Background -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090D16"/>
+      <stop offset="60%" stop-color="#0D1322"/>
+      <stop offset="100%" stop-color="#080C14"/>
+    </linearGradient>
+
+    <!-- Subtle Accent Gradient for Key Text -->
+    <linearGradient id="cyan-accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+
+    <!-- Clean Card Background -->
+    <linearGradient id="metric-card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141E33" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <!-- Subtle Ambient Glow -->
+    <filter id="soft-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="80" result="blur"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Soft Minimalist Ambient Glow -->
+  <circle cx="180" cy="180" r="260" fill="#0284C7" opacity="0.14" filter="url(#soft-glow)"/>
+  <circle cx="1020" cy="460" r="280" fill="#4338CA" opacity="0.12" filter="url(#soft-glow)"/>
+
+  <!-- Main Grid Frame -->
+  <g transform="translate(80, 80)">
+
+    <!-- LEFT COLUMN: Journal Header, Title, Authors -->
+    <g transform="translate(0, 0)">
+      <!-- Minimalist Journal Badge -->
+      <g>
+        <rect width="270" height="32" rx="6" fill="#0284C7" fill-opacity="0.12" stroke="#0284C7" stroke-opacity="0.4" stroke-width="1"/>
+        <text x="14" y="16" fill="#38BDF8" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="0.6" dominant-baseline="middle">JUTI JOURNAL • VOL. 24, NO. 2</text>
+        
+        <rect x="280" y="0" width="85" height="32" rx="6" fill="#1E293B" fill-opacity="0.6" stroke="#334155" stroke-width="1"/>
+        <text x="322" y="16" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" text-anchor="middle" dominant-baseline="middle">SINTA 3</text>
+      </g>
+
+      <!-- Main Paper Title -->
+      <g transform="translate(0, 56)">
+        <text x="0" y="0" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="34" font-weight="800" letter-spacing="-0.8" dominant-baseline="hanging">
+          Evaluating Deterministic
+        </text>
+        <text x="0" y="44" fill="url(#cyan-accent)" font-family="system-ui, -apple-system, sans-serif" font-size="34" font-weight="800" letter-spacing="-0.8" dominant-baseline="hanging">
+          Asynchronous Disk Benchmarking
+        </text>
+        <text x="0" y="88" fill="#CBD5E1" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="600" letter-spacing="-0.5" dominant-baseline="hanging">
+          using the Linux Asynchronous I/O
+        </text>
+      </g>
+
+      <!-- Authors & Affiliation -->
+      <g transform="translate(0, 220)">
+        <text x="0" y="0" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="15" dominant-baseline="hanging">
+          Penulis: <tspan fill="#38BDF8" font-weight="700">Rizky Juniardi</tspan> <tspan fill="#64748B">&amp;</tspan> <tspan fill="#E2E8F0" font-weight="600">Rahmalia Syahputri</tspan>
+        </text>
+        <text x="0" y="26" fill="#64748B" font-family="system-ui, -apple-system, sans-serif" font-size="13" dominant-baseline="hanging">
+          Institut Informatika dan Bisnis (IIB) Darmajaya, Lampung
+        </text>
+      </g>
+
+      <!-- Minimal Pill Tags -->
+      <g transform="translate(0, 305)">
+        <rect width="84" height="28" rx="6" fill="#141E33" stroke="#1E293B" stroke-width="1"/>
+        <text x="42" y="14" fill="#94A3B8" font-family="ui-monospace, monospace" font-size="12" font-weight="600" text-anchor="middle" dominant-baseline="middle">io_uring</text>
+
+        <rect x="94" y="0" width="94" height="28" rx="6" fill="#141E33" stroke="#1E293B" stroke-width="1"/>
+        <text x="141" y="14" fill="#94A3B8" font-family="ui-monospace, monospace" font-size="12" font-weight="600" text-anchor="middle" dominant-baseline="middle">O_DIRECT</text>
+
+        <rect x="198" y="0" width="118" height="28" rx="6" fill="#141E33" stroke="#1E293B" stroke-width="1"/>
+        <text x="257" y="14" fill="#94A3B8" font-family="ui-monospace, monospace" font-size="12" font-weight="600" text-anchor="middle" dominant-baseline="middle">Hyper-V NVMe</text>
+
+        <rect x="326" y="0" width="124" height="28" rx="6" fill="#141E33" stroke="#1E293B" stroke-width="1"/>
+        <text x="388" y="14" fill="#94A3B8" font-family="ui-monospace, monospace" font-size="12" font-weight="600" text-anchor="middle" dominant-baseline="middle">Peer Reviewed</text>
+      </g>
+
+      <!-- DOI Footer -->
+      <g transform="translate(0, 365)">
+        <text x="0" y="0" fill="#475569" font-family="ui-monospace, monospace" font-size="12" dominant-baseline="hanging">
+          DOI: https://doi.org/10.12962/j24068535.v24i2.a1539
+        </text>
+      </g>
+    </g>
+
+    <!-- RIGHT COLUMN: 2 Sleek Minimalist Impact Stat Cards -->
+    <g transform="translate(630, 10)">
+      
+      <!-- Card 1: Throughput -->
+      <g transform="translate(0, 0)">
+        <rect width="410" height="150" rx="14" fill="url(#metric-card)" stroke="#1E293B" stroke-width="1.2"/>
+        
+        <text x="24" y="24" fill="#64748B" font-family="ui-monospace, monospace" font-size="11" font-weight="600" letter-spacing="0.5" dominant-baseline="hanging">SEQUENTIAL WRITE (XFS)</text>
+        <rect x="300" y="20" width="86" height="22" rx="4" fill="#0284C7" fill-opacity="0.2"/>
+        <text x="343" y="31" fill="#38BDF8" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle" dominant-baseline="middle">+139%</text>
+
+        <text x="24" y="58" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="34" font-weight="800" letter-spacing="-1" dominant-baseline="hanging">
+          3,320.09 <tspan font-size="18" font-weight="600" fill="#94A3B8">MB/s</tspan>
+        </text>
+        <text x="24" y="112" fill="#64748B" font-family="system-ui, -apple-system, sans-serif" font-size="13" dominant-baseline="hanging">
+          Calyx io_uring vs <tspan fill="#94A3B8">1,388.92 MB/s</tspan> fio baseline
+        </text>
+      </g>
+
+      <!-- Card 2: P99 Determinism & Latency -->
+      <g transform="translate(0, 175)">
+        <rect width="410" height="150" rx="14" fill="url(#metric-card)" stroke="#1E293B" stroke-width="1.2"/>
+        
+        <text x="24" y="24" fill="#64748B" font-family="ui-monospace, monospace" font-size="11" font-weight="600" letter-spacing="0.5" dominant-baseline="hanging">P99 TAIL LATENCY (NVMe)</text>
+        <rect x="272" y="20" width="114" height="22" rx="4" fill="#065F46" fill-opacity="0.25"/>
+        <text x="329" y="31" fill="#34D399" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle" dominant-baseline="middle">0.18% CV STABLE</text>
+
+        <text x="24" y="58" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="34" font-weight="800" letter-spacing="-1" dominant-baseline="hanging">
+          3,979.54 <tspan font-size="18" font-weight="600" fill="#94A3B8">μs</tspan>
+        </text>
+        <text x="24" y="112" fill="#64748B" font-family="system-ui, -apple-system, sans-serif" font-size="13" dominant-baseline="hanging">
+          Deterministic benchmark vs <tspan fill="#94A3B8">5,210.11 μs</tspan> fio baseline
+        </text>
+      </g>
+
+      <!-- Card 3: Minimal CPU Scaling Indicator -->
+      <g transform="translate(0, 350)">
+        <rect width="410" height="60" rx="10" fill="#0B1322" stroke="#1E293B" stroke-width="1"/>
+        <text x="20" y="22" fill="#64748B" font-family="system-ui, -apple-system, sans-serif" font-size="12" dominant-baseline="hanging">
+          CPU Scaling: <tspan fill="#38BDF8" font-weight="600">Flat 49.5% – 53.1%</tspan> (QD 8 → 64)
+        </text>
+        <text x="390" y="22" fill="#475569" font-family="system-ui, -apple-system, sans-serif" font-size="12" text-anchor="end" dominant-baseline="hanging">
+          vs fio 35.2% → 59.8%
+        </text>
+      </g>
+
+    </g>
+  </g>
+</svg>

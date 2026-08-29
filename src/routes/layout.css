@@ -1,0 +1,172 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+@theme {
+	--font-sans:
+		'Satoshi Variable', 'Satoshi', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+		'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei',
+		'Noto Sans CJK SC', sans-serif;
+	--font-mono: 'Inconsolata Variable', 'Inconsolata', ui-monospace, monospace;
+
+	--color-primary: hsl(var(--primary));
+	--color-foreground: hsl(var(--foreground));
+	--color-background: hsl(var(--background));
+	--color-muted: hsl(var(--muted));
+	--color-muted-foreground: hsl(var(--muted-foreground));
+	--color-card: hsl(var(--card));
+	--color-border: hsl(var(--border));
+	--color-input: hsl(var(--input));
+	--color-ring: hsl(var(--ring));
+	--radius-2xl: 1rem;
+	--radius-xl: 0.75rem;
+	--radius-lg: 0.5rem;
+}
+
+/* noinspection DuplicatedCode */
+:root {
+	--primary: 200 65% 28%;
+	--foreground: 240 10% 3.9%;
+	--muted-foreground: 240 5% 34%;
+	--background: 210 33% 99%;
+	--muted: 240 4.8% 95%;
+	--card: 0 0% 90%;
+	--border: 240 5.9% 88%;
+	--input: 240 5.9% 90%;
+	--ring: 240 5.9% 10%;
+	--radius: 0.5rem;
+	--header-bg: hsl(var(--background));
+}
+
+/* noinspection DuplicatedCode */
+.dark {
+	--primary: 195 95% 85%;
+	--foreground: 0 0% 98%;
+	--muted-foreground: 240 5% 75%;
+	--background: 240 20.54% 5.2%;
+	--muted: 240 5.9% 13%;
+	--card: 240 3.7% 24.9%;
+	--border: 240 3.7% 22.9%;
+	--input: 240 3.7% 17.9%;
+	--ring: 240 4.9% 83.9%;
+	--header-bg: hsl(var(--muted));
+}
+
+html {
+	font-family: var(--font-sans), sans-serif;
+}
+
+/* Navbar scroll margin offset for anchor navigation */
+h1[id],
+h2[id],
+h3[id],
+h4[id],
+section[id],
+[id] {
+	scroll-margin-top: 4.25rem;
+}
+
+html.dark {
+	color-scheme: dark;
+}
+
+body {
+	min-height: 100vh;
+	font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+@keyframes fade-in-up {
+	0% {
+		transform: translateY(1.5rem);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.animate {
+	opacity: 0;
+	animation: 400ms cubic-bezier(0.16, 1, 0.3, 1) fade-in-up;
+	animation-fill-mode: forwards;
+}
+
+@media (prefers-reduced-motion) {
+	.animate {
+		opacity: 0;
+		animation: 100ms fade-in-up;
+		animation-fill-mode: forwards;
+	}
+}
+
+#content-header {
+	animation-delay: 50ms;
+}
+
+#content {
+	animation-delay: 120ms;
+}
+
+#quote-section {
+	animation-delay: 200ms;
+}
+
+/* Custom scrollbars */
+:root {
+	--scrollbar-thumb: hsl(var(--muted-foreground) / 0.3);
+}
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+::-webkit-scrollbar-thumb {
+	background-color: var(--scrollbar-thumb);
+	border-radius: 999px;
+}
+
+/* Astro Pure TOC dynamic indicator styles */
+.toc-bar.highlight-bg {
+	background-color: var(--color-primary);
+}
+.toc-bar.is-read {
+	background-color: var(--color-border);
+}
+.toc-item.highlight {
+	font-weight: 500;
+	color: var(--color-primary);
+}
+.toc-item.highlight-bg-translucent {
+	background-color: var(--color-muted);
+}
+.toc-item.rounded-t-2xl {
+	border-top-left-radius: 1rem;
+	border-top-right-radius: 1rem;
+}
+.toc-item.rounded-b-2xl {
+	border-bottom-left-radius: 1rem;
+	border-bottom-right-radius: 1rem;
+}
+
+/* Astro Pure BackToTop micro-interaction styles */
+#action-buttons {
+	.top-text,
+	.top-icon {
+		transition: opacity 150ms;
+	}
+	.top-text {
+		opacity: 1;
+	}
+	.top-icon {
+		opacity: 0;
+	}
+	&:hover,
+	&.ended {
+		.top-text {
+			opacity: 0;
+		}
+		.top-icon {
+			opacity: 1;
+		}
+	}
+}
