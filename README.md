@@ -11,7 +11,7 @@ Website portofolio pribadi yang dibangun menggunakan **SvelteKit (Svelte 5 Runes
 - **💼 Katalog & Filter Proyek**:
   - Filter kategori proyek (Program, Publikasi, dll).
   - Integrasi thumbnail otomatis OpenGraph GitHub repository.
-  - Kartu proyek dengan deskripsi interaktif *expand/collapse*.
+  - Kartu proyek dengan deskripsi interaktif _expand/collapse_.
 - **📜 Pratinjau Sertifikasi**:
   - Modal lightbox sertifikasi dengan fitur zoom (mouse wheel / shortcut keyboard / tombol), pan/drag, serta double-click/double-tap zoom.
 - **📥 Tombol Unduh CV**:
@@ -30,17 +30,17 @@ Website portofolio pribadi yang dibangun menggunakan **SvelteKit (Svelte 5 Runes
 
 ## 🛠️ Stack Teknologi
 
-| Kategori | Dependensi / Tool |
-| :--- | :--- |
-| **Framework** | SvelteKit (`@sveltejs/kit`), Svelte 5 (`svelte`) |
-| **Adapter** | Cloudflare Workers (`@sveltejs/adapter-cloudflare`) |
-| **Styling** | Tailwind CSS v4 (`tailwindcss`, `@tailwindcss/vite`, `@tailwindcss/typography`, `@tailwindcss/forms`) |
-| **Icons** | `@iconify/svelte`, `lucide-svelte` |
-| **Tipografi** | Satoshi (Fontshare), `@fontsource-variable/inconsolata` |
-| **Optimasi Gambar** | `@sveltejs/enhanced-img` |
-| **SEO** | `svelte-meta-tags` |
-| **HTML Parser** | `node-html-parser` (untuk crawler GitHub OpenGraph) |
-| **Runtime & Tooling** | Bun, TypeScript, ESLint, Prettier, Wrangler |
+| Kategori              | Dependensi / Tool                                                                                     |
+| :-------------------- | :---------------------------------------------------------------------------------------------------- |
+| **Framework**         | SvelteKit (`@sveltejs/kit`), Svelte 5 (`svelte`)                                                      |
+| **Adapter**           | Cloudflare Workers (`@sveltejs/adapter-cloudflare`)                                                   |
+| **Styling**           | Tailwind CSS v4 (`tailwindcss`, `@tailwindcss/vite`, `@tailwindcss/typography`, `@tailwindcss/forms`) |
+| **Icons**             | `@iconify/svelte`, `lucide-svelte`                                                                    |
+| **Tipografi**         | Satoshi (Fontshare), `@fontsource-variable/inconsolata`                                               |
+| **Optimasi Gambar**   | `@sveltejs/enhanced-img`                                                                              |
+| **SEO**               | `svelte-meta-tags`                                                                                    |
+| **HTML Parser**       | `node-html-parser` (untuk crawler GitHub OpenGraph)                                                   |
+| **Runtime & Tooling** | Bun, TypeScript, ESLint, Prettier, Wrangler                                                           |
 
 ---
 
@@ -101,16 +101,19 @@ src/
 ## 🚀 Menjalankan Proyek
 
 ### 1. Instalasi Dependensi
+
 ```bash
 bun install
 ```
 
 ### 2. Development Server
+
 ```bash
 bun run dev
 ```
 
 ### 3. Pemeriksaan Tipe & Linting
+
 ```bash
 # Validasi tipe data TypeScript & Svelte
 bun run check
@@ -121,6 +124,7 @@ bun run format
 ```
 
 ### 4. Build & Preview
+
 ```bash
 # Kompilasi aplikasi untuk Cloudflare Workers
 bun run build
@@ -130,6 +134,7 @@ bun run preview
 ```
 
 ### 5. Membersihkan Cache & Output Build
+
 ```bash
 # Hapus cache .svelte-kit, .wrangler, build, dan output
 bun run clean
