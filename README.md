@@ -120,12 +120,17 @@ bun run lint
 bun run format
 ```
 
-### 4. Build
+### 4. Build & Preview
 ```bash
+# Kompilasi aplikasi untuk Cloudflare Workers
 bun run build
+
+# Uji hasil kompilasi produksi
+bun run preview
 ```
 
-### 5. Preview Hasil Build
+### 5. Membersihkan Cache & Output Build
 ```bash
-bun run preview
+# Hapus cache .svelte-kit, .wrangler, build, dan output
+bun run clean
 ```
