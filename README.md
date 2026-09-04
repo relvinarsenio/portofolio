@@ -15,8 +15,7 @@ Website portofolio pribadi yang dibangun menggunakan **SvelteKit (Svelte 5 Runes
 - **📜 Pratinjau Sertifikasi**:
   - Modal lightbox sertifikasi dengan fitur zoom (mouse wheel / shortcut keyboard / tombol), pan/drag, serta double-click/double-tap zoom.
 - **📥 Tombol Unduh CV**:
-  - Download non-blocking dengan animasi transisi Svelte 5 presisi (360ms).
-  - Mendukung Modern File System Access API (`showSaveFilePicker`) dengan fallback URL direct download.
+  - Nama berkas otomatis menggunakan format `CV - Nama.pdf`.
 - **🧭 Daftar Isi Dinamis (TOC)**:
   - Pelacakan posisi scroll heading secara real-time pada halaman Tentang (`/about`).
 - **🎯 Back-to-Top**:
@@ -35,12 +34,12 @@ Website portofolio pribadi yang dibangun menggunakan **SvelteKit (Svelte 5 Runes
 | **Framework**         | SvelteKit (`@sveltejs/kit`), Svelte 5 (`svelte`)                                                      |
 | **Adapter**           | Cloudflare Workers (`@sveltejs/adapter-cloudflare`)                                                   |
 | **Styling**           | Tailwind CSS v4 (`tailwindcss`, `@tailwindcss/vite`, `@tailwindcss/typography`, `@tailwindcss/forms`) |
-| **Icons**             | `@iconify/svelte`, `lucide-svelte`                                                                    |
+| **Icons**             | `@iconify/svelte` (Lucide, Simple Icons, Logos)                                                       |
 | **Tipografi**         | Satoshi (Fontshare), `@fontsource-variable/inconsolata`                                               |
 | **Optimasi Gambar**   | `@sveltejs/enhanced-img`                                                                              |
 | **SEO**               | `svelte-meta-tags`                                                                                    |
 | **HTML Parser**       | `node-html-parser` (untuk crawler GitHub OpenGraph)                                                   |
-| **Runtime & Tooling** | Bun, TypeScript, ESLint, Prettier, Wrangler                                                           |
+| **Runtime & Tooling** | Bun, TypeScript, ESLint, Prettier, Wrangler 4                                                         |
 
 ---
 

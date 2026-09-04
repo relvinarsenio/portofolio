@@ -127,7 +127,7 @@
 		whatsapp: 'simple-icons:whatsapp'
 	};
 
-	const uiIconMap: Record<string, string> = {
+	const lucideIconMap: Record<string, string> = {
 		network: 'lucide:network',
 		networking: 'lucide:network',
 		bnsp: 'lucide:shield-check',
@@ -206,8 +206,8 @@
 		if (monochromeMap[key]) {
 			return monochromeMap[key];
 		}
-		if (uiIconMap[key]) {
-			return uiIconMap[key];
+		if (lucideIconMap[key]) {
+			return lucideIconMap[key];
 		}
 		return `lucide:${name}`;
 	});

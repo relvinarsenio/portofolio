@@ -4,6 +4,7 @@
 	import { cubicOut } from 'svelte/easing';
 	import Button from './Button.svelte';
 	import Icon from './Icon.svelte';
+	import { siteConfig } from '$lib/data';
 
 	interface Props {
 		url?: string;
@@ -19,7 +20,7 @@
 
 	let {
 		url,
-		filename = 'cv.pdf',
+		filename = `CV - ${siteConfig.author}.pdf`,
 		label = 'Unduh CV',
 		variant = 'button',
 		class: className = '',
@@ -31,33 +32,41 @@
 
 	let status = $state<'idle' | 'loading' | 'success' | 'error'>('idle');
 
+	const statusLabels = $derived({
+		idle: label,
+		loading: 'Menyimpan...',
+		success: 'Tersimpan!',
+		error: 'Gagal'
+	});
+
 	const config = $derived(
 		{
 			idle: {
 				icon: 'download',
-				text: label,
 				iconClass: '',
 				textClass: ''
 			},
 			loading: {
 				icon: 'loader',
-				text: 'Menyimpan...',
 				iconClass: 'animate-spin text-primary',
 				textClass: ''
 			},
 			success: {
 				icon: 'check',
-				text: 'Tersimpan!',
 				iconClass: 'text-emerald-500',
 				textClass: 'text-emerald-500'
 			},
 			error: {
 				icon: 'close',
-				text: 'Gagal',
 				iconClass: 'text-rose-500',
 				textClass: 'text-rose-500'
 			}
 		}[status]
+	);
+
+	const activeLabel = $derived(statusLabels[status]);
+	const pdfFilename = $derived(
+		filename.toLowerCase().endsWith('.pdf') ? filename : `${filename}.pdf`
 	);
 
 	async function handleDownload() {
@@ -68,26 +77,10 @@
 
 		try {
 			const targetUrl = `${url}${url.includes('?') ? '&' : '?'}uuid=${crypto.randomUUID()}`;
-			const response = await fetch(targetUrl);
-			if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
-			const blob = await response.blob();
-
-			if ('showSaveFilePicker' in window) {
-				const picker = await (
-					window as Window & {
-						showSaveFilePicker: (options?: unknown) => Promise<FileSystemFileHandle>;
-					}
-				).showSaveFilePicker({ suggestedName: filename });
-				const stream = await picker.createWritable();
-				await stream.write(blob);
-				await stream.close();
-			} else {
-				window.location.assign(targetUrl);
-			}
+			window.location.assign(targetUrl);
 
 			status = 'success';
-			ondownloadsuccess?.(filename);
+			ondownloadsuccess?.(pdfFilename);
 			setTimeout(() => (status = 'idle'), 2000);
 		} catch (error: unknown) {
 			if (error instanceof DOMException && error.name === 'AbortError') {
@@ -105,7 +98,7 @@
 	{#if children}
 		{@render children()}
 	{:else}
-		<span class="relative flex size-3.5 shrink-0 items-center justify-center">
+		<span class="relative flex size-3.5 shrink-0 items-center justify-center leading-none">
 			{#key status}
 				<span
 					in:scale={{ duration: 360, start: 0.7, easing: cubicOut }}
@@ -117,14 +110,19 @@
 			{/key}
 		</span>
 
-		<span class="relative inline-flex items-center overflow-hidden">
+		<span
+			class="relative inline-grid h-5 min-w-0 place-items-center overflow-hidden align-middle leading-none"
+		>
+			<span class="invisible col-start-1 row-start-1 whitespace-nowrap" aria-hidden="true">
+				{activeLabel}
+			</span>
 			{#key status}
 				<span
-					in:fly={{ y: 6, duration: 360, easing: cubicOut }}
-					out:fly={{ y: -6, duration: 180, easing: cubicOut }}
-					class="inline-block {config.textClass}"
+					in:fly={{ y: -10, duration: 360, easing: cubicOut }}
+					out:fly={{ y: 10, duration: 180, easing: cubicOut }}
+					class="absolute inset-0 flex items-center justify-center whitespace-nowrap {config.textClass}"
 				>
-					{config.text}
+					{activeLabel}
 				</span>
 			{/key}
 		</span>
