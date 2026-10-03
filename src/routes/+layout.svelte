@@ -88,9 +88,7 @@
 		class="pointer-events-none absolute inset-x-0 top-0 z-0 h-96 opacity-25 [background:radial-gradient(ellipse_at_top,var(--color-primary),transparent_70%)]"
 	></div>
 
-	<div
-		class="relative z-10 flex min-h-screen w-full max-w-6xl flex-col px-4 sm:px-6 md:px-10 lg:px-12"
-	>
+	<div class="relative z-10 flex min-h-screen w-full flex-col px-[clamp(1rem,5vw,6rem)]">
 		<Header />
 		<main class="w-full flex-1">
 			{@render children()}

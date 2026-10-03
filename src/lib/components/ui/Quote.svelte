@@ -43,7 +43,7 @@
 <section
 	id="quote-section"
 	aria-label="Inspirational quote"
-	class="animate mt-12 w-full max-w-lg text-center sm:mt-16"
+	class="animate mt-[clamp(2rem,4vw,4rem)] w-full max-w-[clamp(20rem,55vw,52rem)] text-center"
 >
 	<figure class="m-0 flex flex-col items-center gap-y-2.5">
 		<blockquote

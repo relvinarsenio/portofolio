@@ -90,7 +90,7 @@
 	class="top-24 hidden min-w-48 shrink-0 basis-60 md:sticky md:block {className}"
 	aria-label="Daftar isi"
 >
-	<h2 class="text-xs font-medium tracking-wider text-foreground/80 uppercase">DAFTAR ISI</h2>
+	<h2 class="font-medium tracking-wider text-foreground/80 uppercase">DAFTAR ISI</h2>
 	<ul class="mt-4 flex flex-col space-y-0.5">
 		{#each headings as heading, index (heading.slug)}
 			{@const current = headingProgress[heading.slug] ?? { inView: false, progress: 0 }}
@@ -109,7 +109,7 @@
 					></span>
 					<a
 						aria-label={`Navigasi ke seksi: ${heading.title}`}
-						class="toc-item ms-2 line-clamp-2 flow-root w-full px-3 py-1 text-xs text-foreground/75 transition-all hover:text-foreground"
+						class="toc-item ms-2 line-clamp-2 flow-root w-full px-3 py-1 text-foreground/75 transition-all hover:text-foreground"
 						class:ps-7={(heading.depth ?? 2) > 2}
 						class:highlight={current.inView}
 						class:highlight-bg-translucent={current.inView}

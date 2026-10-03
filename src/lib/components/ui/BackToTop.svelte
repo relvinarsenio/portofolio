@@ -11,6 +11,7 @@
 
 	let show = $state(false);
 	let percent = $state(0);
+	let footerOffset = $state(0);
 	let isEnded = $derived(percent >= 99);
 
 	function calculateScroll() {
@@ -28,6 +29,17 @@
 			const progress = Math.min(Math.max(0, scrollTop), maxScrollable);
 			percent = Math.round((progress / maxScrollable) * 100);
 		}
+
+		const actionButtons = document.getElementById('action-buttons');
+		const footer = document.querySelector<HTMLElement>('[data-site-footer]');
+		if (!actionButtons || !footer) return;
+
+		const rootFontSize = Number.parseFloat(getComputedStyle(document.documentElement).fontSize);
+		const baseBottom = rootFontSize * 2;
+		const footerTop = footer.getBoundingClientRect().top;
+		const clearance = 12;
+		const requiredBottom = window.innerHeight - footerTop + clearance;
+		footerOffset = Math.max(0, requiredBottom - baseBottom);
 	}
 
 	function scrollToTop() {
@@ -59,17 +71,18 @@
 </script>
 
 <div
-	class="group fixed inset-e-4 bottom-8 z-50 flex flex-col gap-y-4 transition-all duration-300 sm:inset-e-8 {show
-		? 'translate-y-0 opacity-100'
-		: 'pointer-events-none translate-y-16 opacity-0'} {className}"
+	class="group fixed inset-e-4 z-50 flex flex-col gap-y-4 sm:inset-e-8 {show
+		? 'back-to-top-visible'
+		: 'back-to-top-hidden pointer-events-none'} {className}"
 	id="action-buttons"
+	style={`--footer-offset: ${footerOffset}px`}
 	class:ended={isEnded}
 >
 	<button
 		type="button"
 		onclick={scrollToTop}
 		aria-label="Back to Top"
-		class="relative flex size-10 items-center justify-center rounded-full border-2 border-transparent bg-muted text-muted-foreground transition-all duration-300 hover:border-border/75 hover:text-foreground sm:size-12"
+		class="relative flex size-10 items-center justify-center rounded-full border-2 border-transparent bg-muted text-muted-foreground opacity-0 transition-all duration-300 hover:border-border/75 hover:text-foreground sm:size-12"
 		id="to-top-btn"
 	>
 		<!-- Scroll Percentage Text -->

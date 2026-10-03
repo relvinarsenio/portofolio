@@ -52,7 +52,7 @@
 	});
 </script>
 
-<div class="animate flex flex-col gap-y-10 sm:gap-y-12">
+<div class="animate flex flex-col gap-y-[clamp(1.75rem,2.35vw,2.875rem)]">
 	<header class="flex flex-col gap-y-3">
 		<nav aria-label="Breadcrumb navigation" class="flex items-center gap-x-2">
 			<Button href="/" variant="back" title="Beranda" />
@@ -67,7 +67,7 @@
 
 	<nav aria-label="Filter kategori proyek">
 		<ul
-			class="m-0 flex list-none flex-wrap items-center gap-1.5 border-b border-border/70 p-0 pb-3"
+			class="m-0 inline-flex max-w-full list-none flex-wrap items-center gap-1.5 border-b border-border/70 p-0 pb-3"
 		>
 			{#each categories as category (category.id)}
 				<li>
@@ -93,7 +93,7 @@
 		</ul>
 	</nav>
 
-	<div class="flex flex-col gap-y-10 sm:gap-y-12">
+	<div class="flex flex-col gap-y-[clamp(1.75rem,2.35vw,2.875rem)]">
 		{#each projectSections as section (section.category)}
 			<section
 				aria-labelledby={section.showHeader ? `section-${section.category}` : undefined}
@@ -108,7 +108,9 @@
 					</h2>
 				{/if}
 
-				<ul class="m-0 grid list-none grid-cols-1 gap-4 p-0 sm:grid-cols-2">
+				<ul
+					class="m-0 grid w-full max-w-full list-none grid-cols-1 gap-[clamp(1rem,2vw,2rem)] p-0 sm:grid-cols-2 md:max-w-[clamp(40rem,72vw,78rem)]"
+				>
 					{#each section.items as project (project.title)}
 						<li>
 							<ProjectCard

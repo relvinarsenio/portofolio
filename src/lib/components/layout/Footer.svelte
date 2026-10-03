@@ -4,7 +4,8 @@
 </script>
 
 <footer
-	class="mx-auto mt-8 w-full border-t border-border/80 pt-5 pb-8 text-xs text-muted-foreground sm:mt-10 sm:text-sm"
+	data-site-footer
+	class="mx-auto mt-[clamp(2rem,5vw,5rem)] w-full border-t border-border/80 pt-[clamp(1rem,2vw,2rem)] pb-8 text-xs text-muted-foreground sm:text-sm"
 >
 	<div class="flex flex-col items-center justify-between gap-y-3 sm:flex-row">
 		<!-- Left: Copyright & Credits -->

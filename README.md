@@ -1,140 +1,206 @@
 # Portofolio — Rizky Juniardi
 
-Website portofolio pribadi yang dibangun menggunakan **SvelteKit (Svelte 5 Runes)**, **Tailwind CSS v4**, dan ditargetkan untuk **Cloudflare Workers**.
+> Situs portofolio pribadi yang menampilkan pengalaman, keahlian, proyek, publikasi, serta perjalanan belajar dalam bidang administrasi sistem, jaringan komputer, dan pengembangan perangkat lunak.
+
+Portofolio ini dirancang dengan tampilan yang responsif, ringan, dan nyaman digunakan pada berbagai ukuran layar. Situs mendukung tema terang, tema gelap, dan tema yang mengikuti preferensi sistem.
+
+[![SvelteKit](https://img.shields.io/badge/SvelteKit-2.70.3-ff3e00?logo=svelte&logoColor=white)](https://svelte.dev/docs/kit)
+[![Svelte](https://img.shields.io/badge/Svelte-5.57.1-ff3e00?logo=svelte&logoColor=white)](https://svelte.dev/)
+[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-f38020?logo=cloudflare&logoColor=white)](https://developers.cloudflare.com/workers/)
+[![License](https://img.shields.io/badge/license-BSD--3--Clause-blue)](./LICENSE)
+
+<p align="center">
+  <a href="#fitur">Fitur</a> ·
+  <a href="#teknologi">Teknologi</a> ·
+  <a href="#menjalankan-proyek">Menjalankan Proyek</a> ·
+  <a href="#deployment">Deployment</a> ·
+  <a href="#lisensi">Lisensi</a>
+</p>
+
+| Status            | Keterangan                                            |
+| ----------------- | ----------------------------------------------------- |
+| Tahap             | Aktif dikembangkan                                    |
+| Target deployment | Cloudflare Workers                                    |
+| Fokus             | Portofolio, proyek, publikasi, dan profil profesional |
 
 ---
 
-## ✨ Fitur
+## Fitur
 
-- **⚡ Svelte 5 Native**: Menggunakan Svelte 5 Runes (`$state`, `$derived`, `$props`, `$effect`, `{#snippet}`) secara menyeluruh.
-- **🎨 Tema Gelap/Terang/Sistem**: Pengaturan tema otomatis tersinkronisasi dengan preferensi browser/sistem dan localStorage tanpa flicker saat reload.
-- **💼 Katalog & Filter Proyek**:
-  - Filter kategori proyek (Program, Publikasi, dll).
-  - Integrasi thumbnail otomatis OpenGraph GitHub repository.
-  - Kartu proyek dengan deskripsi interaktif _expand/collapse_.
-- **📜 Pratinjau Sertifikasi**:
-  - Modal lightbox sertifikasi dengan fitur zoom (mouse wheel / shortcut keyboard / tombol), pan/drag, serta double-click/double-tap zoom.
-- **📥 Tombol Unduh CV**:
-  - Nama berkas otomatis menggunakan format `CV - Nama.pdf`.
-- **🧭 Daftar Isi Dinamis (TOC)**:
-  - Pelacakan posisi scroll heading secara real-time pada halaman Tentang (`/about`).
-- **🎯 Back-to-Top**:
-  - Tombol kembali ke atas dengan indikator persentase posisi scroll halaman secara dinamis.
-- **🤖 LLM & SEO Ready**:
-  - Endpoint `/llms.txt` berisi ringkasan profil, proyek, dan keahlian untuk agen AI.
-  - Skema terstruktur Schema.org (`Person`) dan OpenGraph Meta Tags via `svelte-meta-tags`.
-  - Generator `/sitemap.xml` dan `/robots.txt` berbasis endpoint server.
+### Pengalaman dan proyek
 
----
+- Halaman beranda dengan ringkasan profil, aktivitas utama, alur belajar, dan pencapaian terbaru.
+- Katalog proyek dan publikasi dengan filter berdasarkan kategori.
+- Kartu proyek yang menampilkan deskripsi, teknologi, tautan repository, dan tautan rilis jika tersedia.
+- Thumbnail proyek yang dapat diambil dari informasi Open Graph repository GitHub.
 
-## 🛠️ Stack Teknologi
+### Informasi profesional
 
-| Kategori              | Dependensi / Tool                                                                                     |
-| :-------------------- | :---------------------------------------------------------------------------------------------------- |
-| **Framework**         | SvelteKit (`@sveltejs/kit`), Svelte 5 (`svelte`)                                                      |
-| **Adapter**           | Cloudflare Workers (`@sveltejs/adapter-cloudflare`)                                                   |
-| **Styling**           | Tailwind CSS v4 (`tailwindcss`, `@tailwindcss/vite`, `@tailwindcss/typography`, `@tailwindcss/forms`) |
-| **Icons**             | `@iconify/svelte` (Lucide, Simple Icons, Logos)                                                       |
-| **Tipografi**         | Satoshi (Fontshare), `@fontsource-variable/inconsolata`                                               |
-| **Optimasi Gambar**   | `@sveltejs/enhanced-img`                                                                              |
-| **SEO**               | `svelte-meta-tags`                                                                                    |
-| **HTML Parser**       | `node-html-parser` (untuk crawler GitHub OpenGraph)                                                   |
-| **Runtime & Tooling** | Bun, TypeScript, ESLint, Prettier, Wrangler 4                                                         |
+- Halaman Tentang Saya dengan riwayat pengalaman, pendidikan, sertifikasi, alat, minat, dan informasi kontak.
+- Daftar isi interaktif yang mengikuti posisi pembaca pada halaman.
+- Pratinjau sertifikasi melalui modal dengan dukungan zoom dan navigasi yang nyaman.
+- Tombol unduh CV dengan nama berkas yang disusun secara otomatis.
+
+### Pengalaman pengguna
+
+- Tema terang, gelap, dan sistem.
+- Layout fluid yang menyesuaikan ukuran layar, kepadatan tampilan, serta resolusi perangkat.
+- Tombol Back to Top dengan indikator persentase posisi halaman.
+- Animasi transisi yang ringan dan tidak mengganggu navigasi.
+
+### SEO dan akses informasi
+
+- Metadata halaman, Open Graph, dan data terstruktur Schema.org.
+- Sitemap dan robots file yang dihasilkan dari endpoint aplikasi.
+- Ringkasan profil dan proyek melalui endpoint `/llms.txt` agar informasi situs lebih mudah dipahami oleh agen AI.
 
 ---
 
-## 📂 Struktur Direktori (`src/`)
+## Teknologi
 
-```
-src/
-├── app.d.ts                     # Deklarasi Cloudflare Platform bindings (env, ctx, caches, cf)
-├── app.html                     # HTML root template dengan inline script inisialisasi tema
-├── hooks.server.ts              # SvelteKit server handle hook untuk injeksi judul aplikasi
-│
-├── lib/
-│   ├── types.ts                 # Definisi tipe data & antarmuka TypeScript
-│   ├── config.ts & index.ts     # Barrel export module library
-│   │
-│   ├── data/                    # Sumber data utama website
-│   │   ├── site.ts              # Konfigurasi situs (penulis, navigasi, footer social links)
-│   │   ├── projects.ts          # Data proyek dan publikasi ilmiah
-│   │   ├── experience.ts        # Data pengalaman riset dan riwayat pendidikan
-│   │   ├── certificates.ts      # Data sertifikasi kompetensi (BNSP)
-│   │   ├── tools.ts             # Data alat dan teknologi yang dikuasai
-│   │   ├── profile.ts           # Data aktivitas terkini, learning track, dan milestone
-│   │   └── quotes.ts            # Data kutipan teks lokal
-│   │
-│   ├── state/
-│   │   └── theme.svelte.ts      # State reaktif manajemen tema Svelte 5
-│   │
-│   ├── server/
-│   │   └── github.ts            # Logika server-side untuk parsing OpenGraph image GitHub
-│   │
-│   ├── components/
-│   │   ├── ui/                  # Komponen UI dasar (Button, CvDownloadButton, Icon, Card, Label, Quote, dll)
-│   │   └── layout/              # Komponen tata letak (Header, Footer, Section, TOC)
-│   │
-│   └── features/
-│       ├── projects/            # Komponen ProjectCard
-│       ├── certificates/        # Komponen CertificateList dan CertificateModal
-│       ├── timeline/            # Komponen Timeline
-│       └── tools/               # Komponen ToolSection
-│
-└── routes/
-    ├── layout.css               # Definisi theme tokens Tailwind CSS v4 & custom CSS
-    ├── +layout.svelte           # Root layout dengan Schema.org JSON-LD & Header/Footer
-    ├── +layout.server.ts        # Server load function untuk enrich thumbnail proyek
-    ├── +layout.ts               # Konfigurasi prerender = true
-    ├── +error.svelte            # Halaman penanganan error (404/500)
-    ├── +page.svelte             # Halaman Beranda
-    ├── about/+page.svelte       # Halaman Tentang Saya
-    ├── projects/+page.svelte    # Halaman Katalog Proyek
-    ├── api/cv/+server.ts        # Endpoint pengunduhan berkas PDF CV
-    ├── llms.txt/+server.ts      # Endpoint ringkasan untuk LLM/AI
-    ├── robots.txt/+server.ts    # Endpoint robots.txt
-    └── sitemap.xml/+server.ts   # Endpoint sitemap.xml
-```
+| Kategori               | Teknologi                                                                 |
+| ---------------------- | ------------------------------------------------------------------------- |
+| Framework              | [SvelteKit](https://svelte.dev/docs/kit), [Svelte 5](https://svelte.dev/) |
+| Styling                | [Tailwind CSS v4](https://tailwindcss.com/)                               |
+| Deployment             | [Cloudflare Workers](https://workers.cloudflare.com/)                     |
+| Ikon                   | [Iconify](https://iconify.design/)                                        |
+| Tipografi              | Satoshi dan Inconsolata                                                   |
+| Optimasi gambar        | `@sveltejs/enhanced-img`                                                  |
+| Metadata               | `svelte-meta-tags`                                                        |
+| Pengolahan HTML        | `node-html-parser`                                                        |
+| Peralatan pengembangan | Bun, TypeScript, ESLint, Prettier, Wrangler                               |
 
 ---
 
-## 🚀 Menjalankan Proyek
+## Menjalankan Proyek
 
-### 1. Instalasi Dependensi
+### Prasyarat
+
+Pastikan perangkat telah memiliki:
+
+- [Bun](https://bun.sh/)
+- Node.js yang kompatibel dengan versi SvelteKit yang digunakan
+- Akun Cloudflare jika ingin melakukan deployment
+
+### Instalasi
 
 ```bash
 bun install
 ```
 
-### 2. Development Server
+### Menjalankan server pengembangan
 
 ```bash
 bun run dev
 ```
 
-### 3. Pemeriksaan Tipe & Linting
+Setelah server berjalan, buka alamat yang ditampilkan di terminal, biasanya `http://localhost:5173`.
+
+### Pemeriksaan kode
 
 ```bash
-# Validasi tipe data TypeScript & Svelte
+# Pemeriksaan tipe TypeScript dan Svelte
 bun run check
 
-# Linter & Formatter
+# Menjalankan linter
 bun run lint
+
+# Memformat kode
 bun run format
 ```
 
-### 4. Build & Preview
+### Build dan preview
 
 ```bash
-# Kompilasi aplikasi untuk Cloudflare Workers
+# Membuat build produksi
 bun run build
 
-# Uji hasil kompilasi produksi
+# Menjalankan hasil build secara lokal
 bun run preview
 ```
 
-### 5. Membersihkan Cache & Output Build
+### Membersihkan output
 
 ```bash
-# Hapus cache .svelte-kit, .wrangler, build, dan output
 bun run clean
 ```
+
+Perintah ini digunakan untuk membersihkan cache dan output pengembangan seperti `.svelte-kit`, `.wrangler`, dan `build`.
+
+---
+
+## Deployment
+
+Build proyek ini menggunakan adapter Cloudflare sehingga hasil produksinya dapat dijalankan sebagai Worker.
+
+```bash
+# Membuat build produksi
+bun run build
+
+# Menjalankan Worker secara lokal
+bun run preview
+```
+
+Untuk mengunggah hasil build ke akun Cloudflare, gunakan Wrangler setelah autentikasi:
+
+```bash
+bunx wrangler login
+bunx wrangler deploy
+```
+
+> [!NOTE]
+> Pastikan konfigurasi Worker dan akun Cloudflare sudah siap sebelum menjalankan `wrangler deploy`. Lihat [dokumentasi deployment SvelteKit ke Cloudflare](https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/) untuk konfigurasi yang lebih lengkap.
+
+---
+
+## Struktur Proyek
+
+Struktur utama berada di dalam direktori `src/`:
+
+```text
+src/
+├── app.d.ts
+├── app.html
+├── hooks.server.ts
+├── lib/
+│   ├── components/
+│   │   ├── layout/
+│   │   └── ui/
+│   ├── data/
+│   ├── features/
+│   ├── server/
+│   ├── state/
+│   └── types.ts
+└── routes/
+    ├── +layout.svelte
+    ├── +layout.server.ts
+    ├── +layout.ts
+    ├── +page.svelte
+    ├── about/
+    ├── api/cv/
+    ├── projects/
+    ├── llms.txt/
+    ├── robots.txt/
+    └── sitemap.xml/
+```
+
+<details>
+<summary>Ringkasan direktori</summary>
+
+| Direktori                    | Kegunaan                                                          |
+| ---------------------------- | ----------------------------------------------------------------- |
+| `src/lib/data/`              | Data profil, proyek, pengalaman, sertifikasi, alat, dan aktivitas |
+| `src/lib/components/layout/` | Komponen navigasi dan tata letak halaman                          |
+| `src/lib/components/ui/`     | Komponen antarmuka yang dapat digunakan kembali                   |
+| `src/lib/features/`          | Fitur khusus seperti proyek, sertifikasi, timeline, dan alat      |
+| `src/lib/server/`            | Logika yang hanya dijalankan di sisi server                       |
+| `src/lib/state/`             | State aplikasi, termasuk pengaturan tema                          |
+| `src/routes/`                | Halaman, endpoint, dan konfigurasi routing                        |
+
+</details>
+
+---
+
+## Lisensi
+
+Project ini dirilis di bawah [BSD 3-Clause License](./LICENSE).

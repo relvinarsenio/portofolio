@@ -27,7 +27,7 @@
 	];
 </script>
 
-<div class="animate flex flex-col gap-y-10 sm:gap-y-12">
+<div class="animate flex flex-col gap-y-[clamp(1.75rem,2.35vw,2.875rem)]">
 	<header class="flex flex-col gap-y-3">
 		<nav aria-label="Breadcrumb navigation" class="flex items-center gap-x-2">
 			<Button href="/" variant="back" title="Beranda" />
@@ -45,7 +45,7 @@
 	<div class="items-start gap-x-10 md:flex lg:gap-x-14">
 		<TOC {headings} class="md:order-2" />
 
-		<div id="content" class="flex min-w-0 flex-1 flex-col gap-y-10 sm:gap-y-12">
+		<div id="content" class="flex min-w-0 flex-1 flex-col gap-y-[clamp(1.75rem,2.35vw,2.875rem)]">
 			<section
 				aria-label="Biografi"
 				class="flex flex-col gap-y-3 text-xs leading-relaxed text-muted-foreground sm:text-sm"

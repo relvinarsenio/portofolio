@@ -25,6 +25,7 @@
 
 /* noinspection DuplicatedCode */
 :root {
+	font-size: clamp(15px, 1.1vw, 18px);
 	--primary: 200 65% 28%;
 	--foreground: 240 10% 3.9%;
 	--muted-foreground: 240 5% 34%;
@@ -150,6 +151,10 @@ body {
 
 /* Astro Pure BackToTop micro-interaction styles */
 #action-buttons {
+	bottom: calc(2rem + var(--footer-offset, 0px));
+	transform: translateY(calc(100% + clamp(0.5rem, 1vw, 1rem)));
+	transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+
 	.top-text,
 	.top-icon {
 		transition: opacity 150ms;
@@ -169,4 +174,17 @@ body {
 			opacity: 1;
 		}
 	}
+}
+
+#action-buttons.back-to-top-visible {
+	transform: translateY(0);
+	transition-delay: 0ms;
+
+	#to-top-btn {
+		opacity: 1;
+	}
+}
+
+#action-buttons.back-to-top-hidden {
+	transition-delay: 80ms;
 }

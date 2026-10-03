@@ -49,7 +49,7 @@
 
 <header
 	bind:this={headerEl}
-	class="group sticky top-4 z-50 mb-12 flex items-center justify-between rounded-xl border border-transparent max-sm:py-1 sm:rounded-2xl"
+	class="group sticky top-4 z-50 mb-[clamp(2rem,4vw,3rem)] flex items-center justify-between rounded-xl border border-transparent max-sm:py-1 sm:rounded-2xl"
 	class:not-top={isNotTop}
 	class:expanded={isExpanded}
 	data-show={isShow}
@@ -160,7 +160,7 @@
 
 	@media (min-width: 800px) {
 		header.not-top {
-			margin-inline: 8%;
+			margin-inline: clamp(0rem, 2vw, 2rem);
 		}
 	}
 

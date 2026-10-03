@@ -34,7 +34,7 @@
 <div class="flex w-full flex-col items-center">
 	<header
 		id="content-header"
-		class="animate mb-10 flex flex-col items-center gap-y-4 text-center sm:mb-14 sm:gap-y-5"
+		class="animate mb-[clamp(1.75rem,2.35vw,2.875rem)] flex flex-col items-center gap-y-[clamp(1rem,2vw,1.25rem)] text-center"
 	>
 		<figure class="m-0">
 			<img
@@ -109,9 +109,11 @@
 		</nav>
 	</header>
 
-	<div id="content" class="animate flex w-full flex-col gap-y-12 sm:gap-y-16">
+	<div id="content" class="animate flex w-full flex-col gap-y-[clamp(1.75rem,2.35vw,2.875rem)]">
 		<Section title="Fokus Utama">
-			<ul class="m-0 flex list-none flex-col gap-y-3.5 p-0">
+			<ul
+				class="m-0 flex max-w-full list-none flex-col gap-y-3.5 p-0 md:max-w-[clamp(40rem,72vw,78rem)]"
+			>
 				{#each nowActivities as item (item.title)}
 					<li class="group flex items-start gap-x-3">
 						<span
@@ -134,7 +136,9 @@
 		</Section>
 
 		<Section title="Karya Unggulan">
-			<ul class="m-0 grid list-none grid-cols-1 gap-4 p-0 lg:grid-cols-2">
+			<ul
+				class="m-0 grid w-full max-w-full list-none grid-cols-1 gap-[clamp(1rem,2vw,2rem)] p-0 md:max-w-[clamp(40rem,72vw,78rem)] lg:grid-cols-2"
+			>
 				{#each spotlightProjects as project (project.title)}
 					<li>
 						<ProjectCard
