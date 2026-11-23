@@ -27,7 +27,7 @@ export const siteConfig: SiteConfig = {
 		social: [
 			{ icon: 'github', label: 'GitHub', href: 'https://github.com/relvinarsenio' },
 			{ icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/rizky-juniardi' },
-			{ icon: 'mail', label: 'Email', href: 'mailto:rizky.juniardi@outlook.co.id' }
+			{ icon: 'mail', label: 'Email', href: 'mailto:work.rizkyjuniardi@gmail.com' }
 		],
 		links: [
 			{ title: 'Profil GitHub', link: 'https://github.com/relvinarsenio' },

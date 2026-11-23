@@ -110,8 +110,8 @@ export const specialLinksData: SpecialLinkItem[] = [
 	},
 	{
 		name: 'Email',
-		intro: 'rizky.juniardi@outlook.co.id',
-		href: 'mailto:rizky.juniardi@outlook.co.id',
+		intro: 'work.rizkyjuniardi@gmail.com',
+		href: 'mailto:work.rizkyjuniardi@gmail.com',
 		icon: 'mail'
 	}
 ];
