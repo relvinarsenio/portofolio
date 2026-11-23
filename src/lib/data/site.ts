@@ -8,7 +8,7 @@ export const siteConfig: SiteConfig = {
 	status: 'Menerima Peluang Kerja',
 	statusUrl: 'https://github.com/relvinarsenio',
 	cvUrl: '/api/cv',
-	avatar: 'https://github.com/relvinarsenio.png',
+	avatar: '/photo-profile.jpeg',
 	bio: [
 		'Saya berfokus pada administrasi sistem berbasis Linux, mencakup pengelolaan server, virtual environment, dan pemrograman C++.',
 		'Selain menguasai Git untuk version control, saya juga memegang sertifikasi BNSP sebagai Junior Network Administrator.',
