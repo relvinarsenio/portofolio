@@ -87,11 +87,6 @@ export const interestsData: InterestItem[] = [
 		icon: 'code',
 		title: 'C++ & System Tooling',
 		desc: 'Menerapkan idiom modern C++23, multithreading efisien, dan pembuatan CLI tools.'
-	},
-	{
-		icon: 'document',
-		title: 'Riset & Publikasi Ilmiah',
-		desc: 'Menulis riset ilmiah dan menguji performa throughput sistem operasi tingkat rendah.'
 	}
 ];
 

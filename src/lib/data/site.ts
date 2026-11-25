@@ -10,9 +10,9 @@ export const siteConfig: SiteConfig = {
 	cvUrl: '/api/cv',
 	avatar: '/photo-profile.jpeg',
 	bio: [
-		'Saya berfokus pada administrasi sistem berbasis Linux, mencakup pengelolaan server, virtual environment, dan pemrograman C++.',
-		'Selain menguasai Git untuk version control, saya juga memegang sertifikasi BNSP sebagai Junior Network Administrator.',
-		'Saat ini, saya aktif mendalami jaringan komputer, administrasi server Linux, dan system programming dengan pendekatan kerja yang disiplin serta terukur.'
+		'Saya memiliki pengalaman mengelola sistem Linux, administrasi server, dan virtualisasi menggunakan Hyper-V.',
+		'Dalam pengembangan perangkat lunak, saya menggunakan C++ dan Git, dengan beberapa proyek yang berfokus pada system programming dan utilitas Linux maupun Windows.',
+		'Saya memiliki sertifikasi BNSP Junior Network Administrator dan tertarik pada administrasi sistem, jaringan komputer, serta pengembangan perangkat lunak.'
 	],
 	header: {
 		menu: [

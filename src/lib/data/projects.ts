@@ -12,6 +12,15 @@ export const projectsData: ProjectItem[] = [
 		featured: true
 	},
 	{
+		title: 'whereis for Windows \u2014 Native File Lookup Utility',
+		description:
+			'Port Windows dari utilitas whereis berbasis C++23 menggunakan Win32 API. Mencari executable, file manual, dan direktori source melalui PATH, PATHEXT, serta Registry App Paths. Dilengkapi preset CMake dan test suite CTest.',
+		href: 'https://github.com/relvinarsenio/whereis-windows',
+		github: 'https://github.com/relvinarsenio/whereis-windows',
+		category: 'Program',
+		tags: ['C++23', 'Windows', 'Win32 API', 'CMake', 'CTest', 'CLI']
+	},
+	{
 		title: 'Publikasi: Linux Asynchronous I/O Benchmarking',
 		description:
 			'Publikasi ilmiah pada Jurnal JUTI (Vol. 24, Issue 2, hlm. 286-307) berjudul "Evaluating deterministic asynchronous disk benchmarking using the Linux asynchronous I/O".',

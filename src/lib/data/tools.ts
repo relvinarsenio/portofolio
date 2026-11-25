@@ -52,10 +52,10 @@ export const toolsData: ToolGroup[] = [
 				icon: 'network'
 			},
 			{
-				name: 'Neovim',
-				description: 'Terminal Text Editor',
-				href: 'https://neovim.io',
-				icon: 'neovim'
+				name: 'Visual Studio',
+				description: 'C++ Development & MSVC Toolchain',
+				href: 'https://visualstudio.microsoft.com',
+				icon: 'devicon:visualstudio'
 			}
 		]
 	}
