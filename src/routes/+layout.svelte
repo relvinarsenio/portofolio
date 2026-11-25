@@ -21,8 +21,11 @@
 				: `${siteConfig.title} \u2014 ${siteConfig.author}`
 	);
 
+	const avatarSrc = $derived(
+		typeof siteConfig.avatar === 'string' ? siteConfig.avatar : siteConfig.avatar.img.src
+	);
 	const avatarUrl = $derived(
-		siteConfig.avatar.startsWith('http') ? siteConfig.avatar : `${origin}${siteConfig.avatar}`
+		avatarSrc.startsWith('http') ? avatarSrc : `${origin}${avatarSrc}`
 	);
 
 	const socialLinks = $derived(siteConfig.footer.social.map((s) => s.href));

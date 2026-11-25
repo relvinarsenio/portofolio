@@ -37,7 +37,7 @@
 		class="animate mb-[clamp(1.75rem,2.35vw,2.875rem)] flex flex-col items-center gap-y-[clamp(1rem,2vw,1.25rem)] text-center"
 	>
 		<figure class="m-0">
-			<img
+			<enhanced:img
 				src={siteConfig.avatar}
 				alt={siteConfig.author}
 				class="size-32 rounded-full border border-border/80 object-cover p-1.5 shadow-sm sm:size-36 md:size-40"

@@ -25,7 +25,7 @@ export interface SiteConfig {
 	status: string;
 	statusUrl?: string;
 	cvUrl?: string;
-	avatar: string;
+	avatar: EnhancedImage;
 	bio: string[];
 	header: {
 		menu: NavItem[];

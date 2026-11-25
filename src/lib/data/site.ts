@@ -1,4 +1,5 @@
 import type { SiteConfig } from '$lib/types';
+import photoProfile from '$lib/assets/photo-profile.jpeg?enhanced';
 
 export const siteConfig: SiteConfig = {
 	title: 'Portofolio',
@@ -8,7 +9,7 @@ export const siteConfig: SiteConfig = {
 	status: 'Menerima Peluang Kerja',
 	statusUrl: 'https://github.com/relvinarsenio',
 	cvUrl: '/api/cv',
-	avatar: '/photo-profile.jpeg',
+	avatar: photoProfile,
 	bio: [
 		'Saya memiliki pengalaman mengelola sistem Linux, administrasi server, dan virtualisasi menggunakan Hyper-V.',
 		'Dalam pengembangan perangkat lunak, saya menggunakan C++ dan Git, dengan beberapa proyek yang berfokus pada system programming dan utilitas Linux maupun Windows.',
