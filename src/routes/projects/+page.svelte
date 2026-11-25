@@ -3,13 +3,9 @@
 	import type { ProjectCategory } from '$lib/types';
 	import ProjectCard from '$lib/features/projects/ProjectCard.svelte';
 	import Button from '$lib/components/ui/Button.svelte';
-	import type { LayoutData } from '../$types';
+	import type { PageProps } from './$types';
 
-	interface Props {
-		data: LayoutData;
-	}
-
-	let { data }: Props = $props();
+	let { data }: PageProps = $props();
 
 	type FilterCategory = 'Semua' | ProjectCategory;
 	let selectedCategory = $state<FilterCategory>('Semua');

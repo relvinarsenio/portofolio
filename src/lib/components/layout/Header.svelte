@@ -43,6 +43,7 @@
 	function toggleTheme() {
 		themeStore.cycleTheme();
 	}
+
 </script>
 
 <svelte:window onscroll={handleScroll} onresize={handleResize} onclick={handleClickOutside} />
@@ -70,7 +71,7 @@
 			<div class="flex flex-col items-center justify-center overflow-hidden sm:flex-row">
 				{#each siteConfig.header.menu as item (item.link)}
 					<a
-						href={resolve(item.link as '/')}
+						href={resolve(item.link)}
 						onclick={() => (isExpanded = false)}
 						class="w-full flex-none grow py-2 text-right font-medium text-foreground/90 transition-colors hover:text-primary sm:w-fit sm:px-3 sm:text-muted-foreground sm:hover:text-foreground"
 						aria-label={`Menu ${item.title}`}

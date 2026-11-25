@@ -1,6 +1,10 @@
+import type { RouteId } from '$app/types';
+
+export type PageRoute = Extract<RouteId, '/' | '/about' | '/projects'>;
+
 export interface NavItem {
 	title: string;
-	link: `/${string}` | string;
+	link: PageRoute;
 }
 
 export interface SocialLink {

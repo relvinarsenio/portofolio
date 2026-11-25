@@ -3,36 +3,11 @@
 	import { resolve } from '$app/paths';
 	import Icon from '$lib/components/ui/Icon.svelte';
 	import { siteConfig } from '$lib/data';
+	import { getErrorPresentation } from '$lib/errors';
 
 	const status = $derived(page.status || 404);
-	const message = $derived(
-		page.error?.message ||
-			(status === 404
-				? 'Halaman yang Anda cari tidak ditemukan atau telah berpindah alamat.'
-				: status === 403
-					? 'Anda tidak memiliki izin untuk mengakses halaman ini.'
-					: 'Server sedang mengalami kendala. Silakan coba beberapa saat lagi.')
-	);
-
-	const statusTitle = $derived(
-		status === 404
-			? 'Halaman Tidak Ditemukan'
-			: status === 403
-				? 'Akses Ditolak'
-				: status >= 500
-					? 'Kesalahan Server'
-					: 'Kesalahan Klien'
-	);
-
-	const statusBadge = $derived(
-		status === 404
-			? 'HTTP 404 // NOT_FOUND'
-			: status === 403
-				? 'HTTP 403 // FORBIDDEN'
-				: status >= 500
-					? `HTTP ${status} // SERVER_FAULT`
-					: `HTTP ${status} // CLIENT_ERROR`
-	);
+	const presentation = $derived(getErrorPresentation(status));
+	const statusBadge = $derived(`HTTP ${status} // ${presentation.code}`);
 
 	function reloadPage() {
 		if (typeof window !== 'undefined') {
@@ -66,11 +41,11 @@
 			</h1>
 
 			<h2 class="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-				{statusTitle}
+				{presentation.title}
 			</h2>
 
 			<p class="max-w-md text-xs leading-relaxed text-muted-foreground sm:text-sm">
-				{message}
+				{presentation.message}
 			</p>
 		</header>
 

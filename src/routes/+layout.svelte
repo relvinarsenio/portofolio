@@ -7,8 +7,9 @@
 	import BackToTop from '$lib/components/ui/BackToTop.svelte';
 	import { siteConfig, toolsData } from '$lib/data';
 	import { MetaTags, JsonLd } from 'svelte-meta-tags';
+	import type { LayoutProps } from './$types';
 
-	let { children } = $props();
+	let { children }: LayoutProps = $props();
 
 	const pageUrl = $derived(page.url.href);
 	const origin = $derived(page.url.origin);
