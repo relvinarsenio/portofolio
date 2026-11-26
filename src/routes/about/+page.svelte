@@ -18,7 +18,7 @@
 	import TOC, { type TocHeadingItem } from '$lib/components/layout/TOC.svelte';
 
 	const headings: TocHeadingItem[] = [
-		{ title: 'Pengalaman Kerja', slug: 'work-experience' },
+		{ title: 'Proyek', slug: 'projects' },
 		{ title: 'Pendidikan', slug: 'education' },
 		{ title: 'Sertifikasi', slug: 'certifications' },
 		{ title: 'Alat & Stack', slug: 'tools-stack' },
@@ -61,11 +61,11 @@
 				{/if}
 			</section>
 
-			<section id="work-experience" class="flex flex-col gap-y-4">
+			<section id="projects" class="flex flex-col gap-y-4">
 				<h2 class="text-base font-semibold tracking-tight text-foreground sm:text-lg">
-					Pengalaman Kerja
+					Proyek
 				</h2>
-				<Timeline items={experienceData} type="work" />
+				<Timeline items={experienceData} type="project" />
 			</section>
 
 			<section id="education" class="flex flex-col gap-y-4">
