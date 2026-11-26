@@ -3,9 +3,9 @@ import lspTmjkImg from '$lib/assets/lsp-tmjk.png?enhanced';
 
 export const certificatesData: CertificateItem[] = [
 	{
-		title: 'Junior Network Administrator',
-		issuer: 'BNSP & LSP IIB Darmajaya',
-		date: '2023',
+		title: 'Teknisi Madya Jaringan Komputer',
+		issuer: 'LSP IIB Darmajaya',
+		date: '2026',
 		icon: 'bnsp',
 		credentialId: 'LSP-DJ/0016/08/2026',
 		image: lspTmjkImg,
