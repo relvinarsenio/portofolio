@@ -8,7 +8,9 @@
 	}
 
 	let { items, type }: Props = $props();
-	const icon = $derived(type === 'project' ? 'code' : type === 'education' ? 'graduation' : 'briefcase');
+	const icon = $derived(
+		type === 'project' ? 'code' : type === 'education' ? 'graduation' : 'briefcase'
+	);
 </script>
 
 <div class="relative pl-6 sm:pl-8">

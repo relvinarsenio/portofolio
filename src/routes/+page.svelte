@@ -136,7 +136,7 @@
 			>
 				{#each spotlightProjects as project (project.title)}
 					<li>
-						<ProjectCard project={project} variant="card" />
+						<ProjectCard {project} variant="card" />
 					</li>
 				{/each}
 			</ul>

@@ -14,7 +14,8 @@ export const projectsData: readonly ProjectItem[] = [
 		milestone: {
 			year: '2024',
 			icon: 'cpp',
-			detail: 'Membangun CLI benchmarking disk I/O io_uring dan pengujian latency/throughput jaringan server real-time.'
+			detail:
+				'Membangun CLI benchmarking disk I/O io_uring dan pengujian latency/throughput jaringan server real-time.'
 		},
 		timeline: {
 			role: 'Tugas Akhir & Publikasi Jurnal',
@@ -120,7 +121,12 @@ export const projectsData: readonly ProjectItem[] = [
 ];
 
 export const projectTimelineData: readonly TimelineItem[] = projectsData
-	.filter((project): project is ProjectItem & { readonly timeline: NonNullable<ProjectItem['timeline']> } => Boolean(project.timeline))
+	.filter(
+		(
+			project
+		): project is ProjectItem & { readonly timeline: NonNullable<ProjectItem['timeline']> } =>
+			Boolean(project.timeline)
+	)
 	.sort((left, right) => left.timeline.order - right.timeline.order)
 	.map((project) => ({
 		title: project.title,

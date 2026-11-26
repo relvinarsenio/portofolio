@@ -62,9 +62,7 @@
 			</section>
 
 			<section id="projects" class="flex flex-col gap-y-4">
-				<h2 class="text-base font-semibold tracking-tight text-foreground sm:text-lg">
-					Proyek
-				</h2>
+				<h2 class="text-base font-semibold tracking-tight text-foreground sm:text-lg">Proyek</h2>
 				<Timeline items={projectTimelineData} type="project" />
 			</section>
 

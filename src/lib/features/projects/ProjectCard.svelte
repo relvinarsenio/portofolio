@@ -9,11 +9,7 @@
 		class?: string;
 	}
 
-	let {
-		project,
-		variant = 'card',
-		class: className = ''
-	}: Props = $props();
+	let { project, variant = 'card', class: className = '' }: Props = $props();
 
 	let isExpanded = $state(false);
 
