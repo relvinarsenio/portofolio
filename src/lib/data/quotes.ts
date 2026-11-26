@@ -20,13 +20,14 @@ export const quotesData: QuoteItem[] = [
 		source: 'https://www.cs.yale.edu/homes/perlis-alan/quotes.html'
 	},
 	{
-		content: 'Premature optimization is the root of all evil.',
+		content:
+			'We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil.',
 		author: 'Donald E. Knuth',
 		source: 'https://doi.org/10.1145/356635.356640'
 	},
 	{
 		content: 'The purpose of computing is insight, not numbers.',
 		author: 'Richard W. Hamming',
-		source: 'https://history.computer.org/hamming.html'
+		source: 'https://history.computer.org/pioneers/hamming.html'
 	}
 ];
