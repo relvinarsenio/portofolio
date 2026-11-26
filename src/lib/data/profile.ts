@@ -1,4 +1,5 @@
 import { certificatesData } from './certificates';
+import { projectsData } from './projects';
 import type {
 	ActivityItem,
 	LearningTrackItem,
@@ -51,27 +52,24 @@ export const learningTracks: LearningTrackItem[] = [
 
 export const recentMilestones: MilestoneItem[] = [
 	{
-		year: '2024',
-		icon: 'document',
-		title: 'Publikasi Jurnal Ilmiah JUTI',
-		detail:
-			'Mempublikasikan riset "Evaluating deterministic asynchronous disk benchmarking using the Linux asynchronous I/O" (Vol. 24, Issue 2).'
-	},
-	{
-		year: '2024',
-		icon: 'cpp',
-		title: 'Calyx System Diagnostic Tool',
-		detail:
-			'Membangun CLI benchmarking disk I/O io_uring dan pengujian latency/throughput jaringan server real-time.'
-	},
-	{
 		year: certificatesData[0].date,
-		icon: 'bnsp',
+		icon: certificatesData[0].icon ?? 'certificate',
 		title: certificatesData[0].title,
-		detail:
-			`${certificatesData[0].issuer} — ${certificatesData[0].description ?? ''}`
-	}
-];
+		detail: `${certificatesData[0].issuer} — ${certificatesData[0].description ?? ''}`
+	},
+	...projectsData.flatMap((project) =>
+		project.milestone
+			? [
+					{
+						year: project.milestone.year,
+						icon: project.milestone.icon,
+						title: project.title,
+						detail: project.milestone.detail
+					}
+				]
+			: []
+	)
+].sort((left, right) => Number(right.year) - Number(left.year));
 
 export const interestsData: InterestItem[] = [
 	{

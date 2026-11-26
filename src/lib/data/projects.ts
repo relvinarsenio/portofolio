@@ -11,6 +11,11 @@ export const projectsData: readonly ProjectItem[] = [
 		category: 'Program',
 		tags: ['C++23', 'Linux', 'io_uring', 'CLI', 'System'],
 		featured: true,
+		milestone: {
+			year: '2024',
+			icon: 'cpp',
+			detail: 'Membangun CLI benchmarking disk I/O io_uring dan pengujian latency/throughput jaringan server real-time.'
+		},
 		timeline: {
 			role: 'Tugas Akhir & Publikasi Jurnal',
 			date: '2024',
@@ -49,7 +54,12 @@ export const projectsData: readonly ProjectItem[] = [
 		category: 'Publikasi',
 		tags: ['JUTI Journal', 'Research Paper', 'SINTA 3', 'io_uring'],
 		image: jutiBanner,
-		featured: true
+		featured: true,
+		milestone: {
+			year: '2024',
+			icon: 'document',
+			detail: 'Mempublikasikan riset ilmiah pada Jurnal JUTI (Vol. 24, Issue 2).'
+		}
 	},
 	{
 		title: 'SecureChat Pro — RSA Encrypted Chat App',

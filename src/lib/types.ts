@@ -58,6 +58,12 @@ export interface ProjectTimeline {
 	readonly order: number;
 }
 
+export interface ProjectMilestone {
+	readonly year: string;
+	readonly icon: string;
+	readonly detail: string;
+}
+
 export interface ProjectItem {
 	readonly title: string;
 	readonly description: string;
@@ -70,6 +76,7 @@ export interface ProjectItem {
 	readonly image?: EnhancedImage;
 	readonly featured?: boolean;
 	readonly timeline?: ProjectTimeline;
+	readonly milestone?: ProjectMilestone;
 }
 
 export interface TimelineItem {
