@@ -4,7 +4,7 @@
 
 	interface Props {
 		items: (ExperienceItem | EducationItem)[];
-		type?: 'work' | 'education';
+		type?: 'work' | 'education' | 'project';
 	}
 
 	let { items, type = 'work' }: Props = $props();
@@ -40,7 +40,7 @@
 						</h3>
 						{#if item.role}
 							<p class="flex items-center gap-x-1.5 text-xs text-muted-foreground sm:text-sm">
-								<Icon name={type === 'work' ? 'briefcase' : 'graduation'} size={13} />
+								<Icon name={type === 'project' ? 'code' : type === 'education' ? 'graduation' : 'briefcase'} size={13} />
 								<span>{item.role}</span>
 							</p>
 						{/if}
