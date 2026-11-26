@@ -48,9 +48,19 @@ const ALLOWED_IMAGE_HOSTS = new Set([
 	'repository-images.githubusercontent.com',
 	'opengraph.githubassets.com'
 ]);
-const REQUEST_HEADERS = {
-	'user-agent': 'portofolio (+https://github.com/relvinarsenio/portofolio)',
-	accept: 'text/html,application/xhtml+xml;q=0.9,*/*;q=0.8',
+const BROWSER_SPOOF_HEADERS = {
+	'User-Agent':
+		'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0',
+	'sec-ch-ua': '"Not A;Brand";v="99", "Chromium";v="144", "Microsoft Edge";v="144"',
+	'sec-ch-ua-mobile': '?0',
+	'sec-ch-ua-platform': '"Windows"',
+	dnt: '1',
+	'sec-gpc': '1',
+	'upgrade-insecure-requests': '1',
+	'cache-control': 'no-cache',
+	pragma: 'no-cache',
+	accept:
+		'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
 	'accept-language': 'en-US,en;q=0.9'
 };
 
@@ -183,7 +193,7 @@ function rateLimitWaitMs(headers: Headers): number {
 
 async function fetchPage({ owner, name }: RepoRef): Promise<PageResult> {
 	const response = await fetch(`https://github.com/${owner}/${name}`, {
-		headers: REQUEST_HEADERS,
+		headers: BROWSER_SPOOF_HEADERS,
 		signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS)
 	}).catch(() => undefined);
 
