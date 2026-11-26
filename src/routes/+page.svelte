@@ -7,7 +7,6 @@
 		learningTracks,
 		recentMilestones
 	} from '$lib/data';
-	import jutiBanner from '$lib/assets/publication-juti.svg';
 	import Section from '$lib/components/layout/Section.svelte';
 	import ProjectCard from '$lib/features/projects/ProjectCard.svelte';
 	import Button from '$lib/components/ui/Button.svelte';
@@ -137,16 +136,7 @@
 			>
 				{#each spotlightProjects as project (project.title)}
 					<li>
-						<ProjectCard
-							variant="card"
-							heading={project.title}
-							subheading={project.description}
-							image={project.image ?? (project.category === 'Publikasi' ? jutiBanner : undefined)}
-							href={project.href}
-							github={project.github}
-							release={project.release}
-							tags={project.tags}
-						/>
+						<ProjectCard project={project} variant="card" />
 					</li>
 				{/each}
 			</ul>

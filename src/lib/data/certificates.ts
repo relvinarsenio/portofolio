@@ -1,7 +1,7 @@
 import type { CertificateItem } from '$lib/types';
 import lspTmjkImg from '$lib/assets/lsp-tmjk.png?enhanced';
 
-export const certificatesData: CertificateItem[] = [
+export const certificatesData: [CertificateItem, ...CertificateItem[]] = [
 	{
 		title: 'Teknisi Madya Jaringan Komputer',
 		issuer: 'LSP IIB Darmajaya',

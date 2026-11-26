@@ -1,7 +1,7 @@
 <script lang="ts">
 	import {
 		siteConfig,
-		experienceData,
+		projectTimelineData,
 		educationData,
 		certificatesData,
 		toolsData,
@@ -65,7 +65,7 @@
 				<h2 class="text-base font-semibold tracking-tight text-foreground sm:text-lg">
 					Proyek
 				</h2>
-				<Timeline items={experienceData} type="project" />
+				<Timeline items={projectTimelineData} type="project" />
 			</section>
 
 			<section id="education" class="flex flex-col gap-y-4">

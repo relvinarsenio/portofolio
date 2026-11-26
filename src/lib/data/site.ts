@@ -1,4 +1,5 @@
 import type { SiteConfig } from '$lib/types';
+import { certificatesData } from './certificates';
 import photoProfile from '$lib/assets/photo-profile.jpeg?enhanced';
 
 export const siteConfig: SiteConfig = {
@@ -13,7 +14,7 @@ export const siteConfig: SiteConfig = {
 	bio: [
 		'Saya memiliki pengalaman mengelola sistem Linux, administrasi server, dan virtualisasi menggunakan Hyper-V.',
 		'Dalam pengembangan perangkat lunak, saya menggunakan C++ dan Git, dengan beberapa proyek yang berfokus pada system programming dan utilitas Linux maupun Windows.',
-		'Saya memiliki sertifikasi BNSP Junior Network Administrator dan tertarik pada administrasi sistem, jaringan komputer, serta pengembangan perangkat lunak.'
+		`Saya memiliki sertifikasi ${certificatesData[0].title} dari ${certificatesData[0].issuer} (${certificatesData[0].date}) dan tertarik pada administrasi sistem, jaringan komputer, serta pengembangan perangkat lunak.`
 	],
 	header: {
 		menu: [

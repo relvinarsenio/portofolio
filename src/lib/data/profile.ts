@@ -1,3 +1,4 @@
+import { certificatesData } from './certificates';
 import type {
 	ActivityItem,
 	LearningTrackItem,
@@ -20,7 +21,7 @@ export const nowActivities: ActivityItem[] = [
 	{
 		icon: 'bnsp',
 		title: 'Networking & Infrastructure',
-		desc: 'Memegang sertifikasi BNSP Junior Network Administrator \u2014 mengonfigurasi routing, switching, dan jaringan komputer.'
+		desc: `Memegang sertifikasi ${certificatesData[0].title} dari ${certificatesData[0].issuer} (${certificatesData[0].date}) dan mendalami konfigurasi routing, switching, serta jaringan komputer.`
 	}
 ];
 
@@ -64,11 +65,11 @@ export const recentMilestones: MilestoneItem[] = [
 			'Membangun CLI benchmarking disk I/O io_uring dan pengujian latency/throughput jaringan server real-time.'
 	},
 	{
-		year: '2023',
+		year: certificatesData[0].date,
 		icon: 'bnsp',
-		title: 'Sertifikasi BNSP Network Administrator',
+		title: certificatesData[0].title,
 		detail:
-			'Mengantongi sertifikasi kompetensi nasional dalam administrasi dan pemeliharaan infrastruktur jaringan komputer.'
+			`${certificatesData[0].issuer} — ${certificatesData[0].description ?? ''}`
 	}
 ];
 

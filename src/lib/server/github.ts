@@ -1,11 +1,7 @@
 import { resolve } from '$app/paths';
 import { projectsData } from '$lib/data';
 import type { ProjectItem } from '$lib/types';
-
-interface RepoRef {
-	readonly owner: string;
-	readonly name: string;
-}
+import { getGitHubOgImageUrl, parseGitHubRepoUrl, type GitHubRepoRef } from '$lib/utils/github';
 
 interface CacheEntry {
 	readonly image: string;
@@ -38,7 +34,6 @@ const BASE_DELAY_MS = 500;
 const MAX_DELAY_MS = 3_000;
 const MAX_HEAD_BYTES = 262_144;
 
-const REPO_URL_PATTERN = /^https:\/\/github\.com\/([\w.-]+)\/([\w.-]+?)\/?$/;
 const META_TAG_PATTERN = /<meta\b[^>]*>/gi;
 const ATTRIBUTE_PATTERN = /([a-z][\w:-]*)\s*=\s*(?:"([^"]*)"|'([^']*)')/gi;
 const IMAGE_LABELS = ['og:image', 'twitter:image', 'twitter:image:src'];
@@ -64,24 +59,15 @@ const BROWSER_SPOOF_HEADERS = {
 	'accept-language': 'en-US,en;q=0.9'
 };
 
-function parseRepo(githubUrl: string): RepoRef | undefined {
-	const match = REPO_URL_PATTERN.exec(githubUrl);
-	return match ? { owner: match[1], name: match[2] } : undefined;
-}
-
-function repoKey({ owner, name }: RepoRef): string {
+function repoKey({ owner, name }: GitHubRepoRef): string {
 	return `${owner}/${name}`.toLowerCase();
 }
 
-function fallbackImage({ owner, name }: RepoRef): string {
-	return `https://opengraph.githubassets.com/1/${owner}/${name}`;
-}
-
-function collectRepos(): Map<string, RepoRef> {
-	const repos = new Map<string, RepoRef>();
+function collectRepos(): Map<string, GitHubRepoRef> {
+	const repos = new Map<string, GitHubRepoRef>();
 
 	for (const project of projectsData) {
-		const repo = !project.image && project.github ? parseRepo(project.github) : undefined;
+		const repo = !project.image && project.github ? parseGitHubRepoUrl(project.github) : undefined;
 		if (repo) repos.set(repoKey(repo), repo);
 	}
 
@@ -191,7 +177,7 @@ function rateLimitWaitMs(headers: Headers): number {
 	return RATE_LIMIT_DEFAULT_WAIT_MS;
 }
 
-async function fetchPage({ owner, name }: RepoRef): Promise<PageResult> {
+async function fetchPage({ owner, name }: GitHubRepoRef): Promise<PageResult> {
 	const response = await fetch(`https://github.com/${owner}/${name}`, {
 		headers: BROWSER_SPOOF_HEADERS,
 		signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS)
@@ -211,7 +197,7 @@ async function fetchPage({ owner, name }: RepoRef): Promise<PageResult> {
 	return { html: await readHead(response).catch(() => '') };
 }
 
-async function scrapeOgImage(repo: RepoRef, deadline: number): Promise<ScrapeResult> {
+async function scrapeOgImage(repo: GitHubRepoRef, deadline: number): Promise<ScrapeResult> {
 	for (let attempt = 0; attempt < ATTEMPTS; attempt++) {
 		if (Date.now() >= deadline) return {};
 
@@ -267,13 +253,13 @@ async function writeCache(
 		.catch((error) => console.warn('Gagal menyimpan cache OpenGraph ke KV.', error));
 }
 
-async function loadOgImage(kv: KVNamespace | undefined, repo: RepoRef): Promise<string> {
+async function loadOgImage(kv: KVNamespace | undefined, repo: GitHubRepoRef): Promise<string> {
 	const key = repoKey(repo);
 	const cached = await readCache(kv, key);
 	if (cached && isFresh(cached)) return cached.image;
 
 	const { image: scraped, blockedForMs } = await scrapeOgImage(repo, Date.now() + SCRAPE_BUDGET_MS);
-	const image = scraped ?? cached?.image ?? fallbackImage(repo);
+	const image = scraped ?? cached?.image ?? getGitHubOgImageUrl(repo);
 	const checkedAt = new Date().toISOString();
 	const waitMs = Math.min(Math.max(FAILURE_TTL_MS, blockedForMs ?? 0), MAX_BLOCK_MS);
 
@@ -308,7 +294,7 @@ export function getEnrichedProjects(): ProjectItem[] {
 	return projectsData.map((project) => {
 		if (project.image || !project.github) return project;
 
-		const repo = parseRepo(project.github);
+		const repo = parseGitHubRepoUrl(project.github);
 		if (!repo) return project;
 
 		return {
