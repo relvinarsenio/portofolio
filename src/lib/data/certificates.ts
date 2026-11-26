@@ -6,7 +6,7 @@ export const certificatesData: [CertificateItem, ...CertificateItem[]] = [
 		title: 'Teknisi Madya Jaringan Komputer',
 		issuer: 'LSP IIB Darmajaya',
 		date: '2026',
-		icon: 'bnsp',
+		icon: 'certificate',
 		credentialId: 'LSP-DJ/0016/08/2026',
 		image: lspTmjkImg,
 		description:

@@ -20,7 +20,7 @@ export const nowActivities: ActivityItem[] = [
 		desc: 'Mengembangkan tools benchmarking disk I/O asinkron (io_uring) dan diagnostik sistem berbasis C++23.'
 	},
 	{
-		icon: 'bnsp',
+		icon: certificatesData[0].icon ?? 'certificate',
 		title: 'Networking & Infrastructure',
 		desc: `Memegang sertifikasi ${certificatesData[0].title} dari ${certificatesData[0].issuer} (${certificatesData[0].date}) dan mendalami konfigurasi routing, switching, serta jaringan komputer.`
 	}
