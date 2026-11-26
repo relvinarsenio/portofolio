@@ -1,8 +1,8 @@
-# Portofolio — Rizky Juniardi
+# Portofolio Rizky Juniardi
 
-> Situs portofolio pribadi yang menampilkan pengalaman, keahlian, proyek, publikasi, serta perjalanan belajar dalam bidang administrasi sistem, jaringan komputer, dan pengembangan perangkat lunak.
+> Situs portofolio pribadi yang memuat profil, keahlian, proyek, publikasi, dan perjalanan belajar di bidang administrasi sistem, jaringan komputer, serta pengembangan perangkat lunak.
 
-Portofolio ini dirancang dengan tampilan yang responsif, ringan, dan nyaman digunakan pada berbagai ukuran layar. Situs mendukung tema terang, tema gelap, dan tema yang mengikuti preferensi sistem.
+Situs ini menggunakan tata letak responsif. Tema dapat mengikuti pengaturan sistem atau diatur ke mode terang maupun gelap.
 
 [![SvelteKit](https://img.shields.io/badge/SvelteKit-2.70.3-ff3e00?logo=svelte&logoColor=white)](https://svelte.dev/docs/kit)
 [![Svelte](https://img.shields.io/badge/Svelte-5.57.1-ff3e00?logo=svelte&logoColor=white)](https://svelte.dev/)
@@ -27,32 +27,32 @@ Portofolio ini dirancang dengan tampilan yang responsif, ringan, dan nyaman digu
 
 ## Fitur
 
-### Pengalaman dan proyek
+### Profil dan proyek
 
-- Halaman beranda dengan ringkasan profil, aktivitas utama, alur belajar, dan pencapaian terbaru.
+- Beranda merangkum profil, aktivitas, alur belajar, dan pencapaian terbaru.
 - Katalog proyek dan publikasi dengan filter berdasarkan kategori.
 - Kartu proyek yang menampilkan deskripsi, teknologi, tautan repository, dan tautan rilis jika tersedia.
-- Thumbnail proyek yang dapat diambil dari informasi Open Graph repository GitHub.
+- Thumbnail proyek menggunakan metadata Open Graph dari repository GitHub. Server menyimpan hasilnya di Cloudflare KV dan memeriksa ulang cache setelah tujuh hari. Jika metadata gambar tidak tersedia, aplikasi menggunakan gambar Open Graph bawaan GitHub.
 
 ### Informasi profesional
 
-- Halaman Tentang Saya dengan riwayat pengalaman, pendidikan, sertifikasi, alat, minat, dan informasi kontak.
-- Daftar isi interaktif yang mengikuti posisi pembaca pada halaman.
-- Pratinjau sertifikasi melalui modal dengan dukungan zoom dan navigasi yang nyaman.
-- Tombol unduh CV dengan nama berkas yang disusun secara otomatis.
+- Halaman Tentang Saya berisi daftar proyek, pendidikan, sertifikasi, alat, minat, dan informasi kontak.
+- Daftar isi interaktif yang mengikuti posisi pembaca saat menggulir halaman.
+- Pratinjau sertifikasi dalam modal dengan kontrol zoom dan navigasi.
+- Tombol unduh CV yang membuat nama berkas secara otomatis.
 
 ### Pengalaman pengguna
 
-- Tema terang, gelap, dan sistem.
-- Layout fluid yang menyesuaikan ukuran layar, kepadatan tampilan, serta resolusi perangkat.
+- Tema terang, gelap, atau mengikuti pengaturan sistem.
+- Tata letak menyesuaikan ukuran layar, kepadatan tampilan, dan resolusi perangkat.
 - Tombol Back to Top dengan indikator persentase posisi halaman.
 - Animasi transisi yang ringan dan tidak mengganggu navigasi.
 
 ### SEO dan akses informasi
 
 - Metadata halaman, Open Graph, dan data terstruktur Schema.org.
-- Sitemap dan robots file yang dihasilkan dari endpoint aplikasi.
-- Ringkasan profil dan proyek melalui endpoint `/llms.txt` agar informasi situs lebih mudah dipahami oleh agen AI.
+- Endpoint aplikasi menyediakan sitemap dan robots file.
+- Endpoint `/llms.txt` menyajikan ringkasan profil dan proyek untuk dibaca agen AI.
 
 ---
 
@@ -72,7 +72,7 @@ Portofolio ini dirancang dengan tampilan yang responsif, ringan, dan nyaman digu
 
 ---
 
-## Menjalankan Proyek
+## Menjalankan proyek
 
 ### Prasyarat
 
@@ -153,7 +153,7 @@ bunx wrangler deploy
 
 ---
 
-## Struktur Proyek
+## Struktur proyek
 
 Struktur utama berada di dalam direktori `src/`:
 
@@ -189,7 +189,7 @@ src/
 
 | Direktori                    | Kegunaan                                                          |
 | ---------------------------- | ----------------------------------------------------------------- |
-| `src/lib/data/`              | Data profil, proyek, pengalaman, sertifikasi, alat, dan aktivitas |
+| `src/lib/data/`              | Data profil, proyek, pendidikan, sertifikasi, alat, dan aktivitas |
 | `src/lib/components/layout/` | Komponen navigasi dan tata letak halaman                          |
 | `src/lib/components/ui/`     | Komponen antarmuka yang dapat digunakan kembali                   |
 | `src/lib/features/`          | Fitur khusus seperti proyek, sertifikasi, timeline, dan alat      |
