@@ -3,17 +3,18 @@
 	"name": "portofolio",
 	"compatibility_date": "2026-08-25",
 	"compatibility_flags": ["nodejs_als"],
-	"kv_namespaces": [
-		{
-			"binding": "OG_CACHE",
-			"id": "3cdd2d59603d4989ae99167ce6abfd69"
-		}
-	],
 	"main": ".svelte-kit/cloudflare/_worker.js",
 	"assets": {
 		"binding": "ASSETS",
 		"directory": ".svelte-kit/cloudflare"
 	},
 	"workers_dev": true,
-	"preview_urls": true
+	"preview_urls": true,
+	"kv_namespaces": [
+		{
+			"binding": "OG_CACHE",
+			"id": "3cdd2d59603d4989ae99167ce6abfd69",
+			"remote": false
+		}
+	]
 }

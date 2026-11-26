@@ -115,13 +115,13 @@
 						<span
 							class="mt-1 flex size-5 shrink-0 items-center justify-center text-muted-foreground transition-colors group-hover:text-foreground"
 							aria-hidden="true"
-							>
+						>
 							<Icon name={item.icon} size={16} />
 						</span>
 						<div class="flex flex-col gap-y-0.5">
 							<h3
 								class="text-xs font-semibold text-foreground transition-colors group-hover:text-primary sm:text-sm"
-								>
+							>
 								{item.title}
 							</h3>
 							<p class="text-xs leading-relaxed text-muted-foreground">{item.desc}</p>
@@ -166,7 +166,7 @@
 						<div class="flex flex-col items-center self-stretch">
 							<span
 								class="font-mono text-xs font-bold text-muted-foreground transition-colors group-hover:text-primary"
-								>
+							>
 								{track.step}
 							</span>
 							{#if idx < learningTracks.length - 1}
@@ -179,17 +179,17 @@
 								<span
 									class="flex size-5 items-center justify-center text-muted-foreground transition-colors group-hover:text-primary"
 									aria-hidden="true"
-									>
+								>
 									<Icon name={track.icon} size={15} />
 								</span>
 								<h3
 									class="text-xs font-semibold text-foreground transition-colors group-hover:text-primary sm:text-sm"
-									>
+								>
 									{track.title}
 								</h3>
 								<span
 									class="rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground"
-									>
+								>
 									{track.category}
 								</span>
 							</header>
@@ -210,7 +210,7 @@
 							<div
 								class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-md bg-muted text-muted-foreground"
 								aria-hidden="true"
-								>
+							>
 								<Icon name={item.icon} size={14} />
 							</div>
 							<div>
@@ -220,7 +220,7 @@
 						</div>
 						<time
 							class="self-start font-mono text-xs font-semibold whitespace-nowrap text-primary sm:self-auto"
-							>
+						>
 							{item.year}
 						</time>
 					</li>
