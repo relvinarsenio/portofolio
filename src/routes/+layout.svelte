@@ -25,9 +25,7 @@
 	const avatarSrc = $derived(
 		typeof siteConfig.avatar === 'string' ? siteConfig.avatar : siteConfig.avatar.img.src
 	);
-	const avatarUrl = $derived(
-		avatarSrc.startsWith('http') ? avatarSrc : `${origin}${avatarSrc}`
-	);
+	const avatarUrl = $derived(avatarSrc.startsWith('http') ? avatarSrc : `${origin}${avatarSrc}`);
 
 	const socialLinks = $derived(siteConfig.footer.social.map((s) => s.href));
 	const knowsAbout = $derived([

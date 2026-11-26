@@ -1,12 +1,12 @@
 import type { CertificateItem } from '$lib/types';
 import lspTmjkImg from '$lib/assets/lsp-tmjk.png?enhanced';
 
-export const certificatesData: CertificateItem[] = [
+export const certificatesData: [CertificateItem, ...CertificateItem[]] = [
 	{
-		title: 'Junior Network Administrator',
-		issuer: 'BNSP & LSP IIB Darmajaya',
-		date: '2023',
-		icon: 'bnsp',
+		title: 'Teknisi Madya Jaringan Komputer',
+		issuer: 'LSP IIB Darmajaya',
+		date: '2026',
+		icon: 'certificate',
 		credentialId: 'LSP-DJ/0016/08/2026',
 		image: lspTmjkImg,
 		description:

@@ -1,5 +1,5 @@
 import type { RequestHandler } from './$types';
-import { siteConfig, projectsData, experienceData, toolsData } from '$lib/data';
+import { siteConfig, projectsData, projectTimelineData, toolsData } from '$lib/data';
 import type { ToolGroup, ToolItem } from '$lib/types';
 
 export const GET: RequestHandler = ({ url }) => {
@@ -13,7 +13,7 @@ export const GET: RequestHandler = ({ url }) => {
 		.map((p) => `- [${p.title}](${p.href || p.github || `${origin}/projects`}): ${p.description}`)
 		.join('\n');
 
-	const experienceList = experienceData
+	const projectTimeline = projectTimelineData
 		.map(
 			(e) =>
 				`- **${e.role}** pada ${e.title} (${e.date})${e.description && e.description.length ? `: ${e.description.join(' ')}` : ''}`
@@ -33,13 +33,13 @@ ${allTools}
 ## Proyek Unggulan
 ${projectList}
 
-## Pengalaman & Riset
-${experienceList}
+## Proyek & Riset
+${projectTimeline}
 
 ## Tautan Navigasi
 - [Beranda](${origin}/): Ringkasan portofolio dan fokus keahlian saat ini.
 - [Proyek](${origin}/projects): Katalog lengkap program, alat, dan publikasi ilmiah.
-- [Tentang Saya](${origin}/about): Perjalanan studi, sertifikasi BNSP, alat yang digunakan, dan kontak.
+- [Tentang Saya](${origin}/about): Perjalanan studi, sertifikasi jaringan komputer, alat yang digunakan, dan kontak.
 - [Peta Situs (Sitemap)](${origin}/sitemap.xml): Peta situs XML untuk pengindeksan mesin pencari.
 `;
 

@@ -43,7 +43,6 @@
 	function toggleTheme() {
 		themeStore.cycleTheme();
 	}
-
 </script>
 
 <svelte:window onscroll={handleScroll} onresize={handleResize} onclick={handleClickOutside} />

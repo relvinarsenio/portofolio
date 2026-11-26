@@ -9,5 +9,12 @@
 		"directory": ".svelte-kit/cloudflare"
 	},
 	"workers_dev": true,
-	"preview_urls": true
+	"preview_urls": true,
+	"kv_namespaces": [
+		{
+			"binding": "OG_CACHE",
+			"id": "3cdd2d59603d4989ae99167ce6abfd69",
+			"remote": false
+		}
+	]
 }

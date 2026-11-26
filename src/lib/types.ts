@@ -49,31 +49,44 @@ export type EnhancedImage =
 			sources: Record<string, string>;
 	  };
 
-export type ProjectCategory = 'Program' | 'Publikasi' | 'Alat' | 'Open Source' | (string & {});
+export type ProjectCategory = 'Program' | 'Publikasi' | 'Alat' | 'Open Source';
+
+export interface ProjectTimeline {
+	readonly role: string;
+	readonly date: string;
+	readonly highlights: readonly string[];
+	readonly order: number;
+}
+
+export interface ProjectMilestone {
+	readonly year: string;
+	readonly icon: string;
+	readonly detail: string;
+}
 
 export interface ProjectItem {
-	title: string;
-	description: string;
-	href?: string;
-	github?: string;
-	release?: string;
-	category?: ProjectCategory;
-	tags?: string[];
-	stars?: number;
-	image?: EnhancedImage;
-	featured?: boolean;
+	readonly title: string;
+	readonly description: string;
+	readonly href?: string;
+	readonly github?: string;
+	readonly release?: string;
+	readonly category?: ProjectCategory;
+	readonly tags?: readonly string[];
+	readonly stars?: number;
+	readonly image?: EnhancedImage;
+	readonly featured?: boolean;
+	readonly timeline?: ProjectTimeline;
+	readonly milestone?: ProjectMilestone;
 }
 
-export interface ExperienceItem {
-	title: string;
-	role: string;
-	date: string;
-	location?: string;
-	description?: string[];
-	link?: string;
+export interface TimelineItem {
+	readonly title: string;
+	readonly role: string;
+	readonly date: string;
+	readonly location?: string;
+	readonly description?: readonly string[];
+	readonly link?: string;
 }
-
-export type EducationItem = ExperienceItem;
 
 export interface CertificateItem {
 	title: string;

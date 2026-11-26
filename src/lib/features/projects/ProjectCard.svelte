@@ -1,44 +1,24 @@
 <script lang="ts">
 	import Icon from '$lib/components/ui/Icon.svelte';
-	import type { EnhancedImage } from '$lib/types';
+	import { getGitHubOgImageUrlFromUrl } from '$lib/utils/github';
+	import type { ProjectItem } from '$lib/types';
 
 	interface Props {
-		heading: string;
-		subheading: string;
-		image?: EnhancedImage;
-		href?: string;
-		github?: string;
-		release?: string;
-		tags?: string[];
+		project: ProjectItem;
 		variant?: 'card' | 'compact';
 		class?: string;
 	}
 
-	let {
-		heading,
-		subheading,
-		image,
-		href,
-		github,
-		release,
-		tags = [],
-		variant = 'card',
-		class: className = ''
-	}: Props = $props();
+	let { project, variant = 'card', class: className = '' }: Props = $props();
 
 	let isExpanded = $state(false);
 
 	const isCompact = $derived(variant === 'compact');
-
-	const repoPath = $derived(
-		github ? github.replace(/^https:\/\/github\.com\//, '').replace(/\/$/, '') : null
-	);
-
 	const displayImageUrl = $derived(
-		typeof image === 'string'
-			? image
-			: (image?.img?.src ??
-					(repoPath ? `https://opengraph.githubassets.com/1/${repoPath}` : undefined))
+		typeof project.image === 'string'
+			? project.image
+			: (project.image?.img?.src ??
+					(project.github ? getGitHubOgImageUrlFromUrl(project.github) : undefined))
 	);
 
 	function toggleExpand(e: MouseEvent) {
@@ -59,7 +39,7 @@
 		>
 			<img
 				src={displayImageUrl}
-				alt={heading}
+				alt={project.title}
 				loading="lazy"
 				decoding="async"
 				draggable="false"
@@ -73,20 +53,19 @@
 
 	<div class="relative flex flex-1 flex-col justify-between {!isCompact ? 'p-4 sm:p-5' : ''}">
 		<div class="flex flex-col gap-y-2">
-			<!-- Header Title & External Link -->
 			<header class="flex items-start justify-between gap-x-3">
 				<div class="min-w-0 flex-1">
-					{#if href}
+					{#if project.href}
 						<a
-							{href}
+							href={project.href}
 							target="_blank"
 							rel="external noopener noreferrer"
 							class="group/title inline-flex items-baseline gap-x-1 font-semibold text-foreground transition-colors hover:text-primary {isCompact
 								? 'text-sm'
 								: 'text-sm sm:text-base'}"
 						>
-							<span class="line-clamp-2">{heading}</span>
-							{#if !github && !release}
+							<span class="line-clamp-2">{project.title}</span>
+							{#if !project.github && !project.release}
 								<span
 									class="shrink-0 text-muted-foreground/60 transition-transform group-hover/title:translate-x-0.5 group-hover/title:-translate-y-0.5 group-hover/title:text-primary"
 								>
@@ -100,16 +79,16 @@
 								? 'text-sm'
 								: 'text-sm sm:text-base'}"
 						>
-							{heading}
+							{project.title}
 						</h3>
 					{/if}
 				</div>
 
-				{#if github || release}
+				{#if project.github || project.release}
 					<nav class="flex shrink-0 items-center pt-0.5" aria-label="Tautan proyek">
-						{#if github}
+						{#if project.github}
 							<a
-								href={github}
+								href={project.github}
 								target="_blank"
 								rel="external noopener noreferrer"
 								class="text-muted-foreground/70 transition-colors hover:text-foreground"
@@ -118,9 +97,9 @@
 							>
 								<Icon name="github" size={16} />
 							</a>
-						{:else if release}
+						{:else if project.release}
 							<a
-								href={release}
+								href={project.release}
 								target="_blank"
 								rel="external noopener noreferrer"
 								class="text-muted-foreground/70 transition-colors hover:text-foreground"
@@ -134,7 +113,6 @@
 				{/if}
 			</header>
 
-			<!-- Subheading / Description -->
 			<button
 				type="button"
 				onclick={toggleExpand}
@@ -143,18 +121,17 @@
 				aria-expanded={isExpanded}
 			>
 				<p class={!isExpanded ? 'line-clamp-3' : ''}>
-					{subheading}
+					{project.description}
 				</p>
 			</button>
 		</div>
 
-		<!-- Tags -->
-		{#if tags.length > 0}
+		{#if project.tags?.length}
 			<ul
 				class="m-0 mt-3.5 flex list-none flex-wrap items-center gap-1.5 p-0"
 				aria-label="Teknologi yang digunakan"
 			>
-				{#each tags as tag (tag)}
+				{#each project.tags as tag (tag)}
 					<li>
 						<span
 							class="inline-block rounded-md bg-muted/60 px-2 py-0.5 font-mono text-[11px] leading-tight text-muted-foreground/85 transition-colors group-hover:text-foreground"

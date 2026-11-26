@@ -1,3 +1,5 @@
+import { certificatesData } from './certificates';
+import { projectsData } from './projects';
 import type {
 	ActivityItem,
 	LearningTrackItem,
@@ -18,9 +20,9 @@ export const nowActivities: ActivityItem[] = [
 		desc: 'Mengembangkan tools benchmarking disk I/O asinkron (io_uring) dan diagnostik sistem berbasis C++23.'
 	},
 	{
-		icon: 'bnsp',
+		icon: certificatesData[0].icon ?? 'certificate',
 		title: 'Networking & Infrastructure',
-		desc: 'Memegang sertifikasi BNSP Junior Network Administrator \u2014 mengonfigurasi routing, switching, dan jaringan komputer.'
+		desc: `Memegang sertifikasi ${certificatesData[0].title} dari ${certificatesData[0].issuer} (${certificatesData[0].date}) dan mendalami konfigurasi routing, switching, serta jaringan komputer.`
 	}
 ];
 
@@ -50,27 +52,24 @@ export const learningTracks: LearningTrackItem[] = [
 
 export const recentMilestones: MilestoneItem[] = [
 	{
-		year: '2024',
-		icon: 'document',
-		title: 'Publikasi Jurnal Ilmiah JUTI',
-		detail:
-			'Mempublikasikan riset "Evaluating deterministic asynchronous disk benchmarking using the Linux asynchronous I/O" (Vol. 24, Issue 2).'
+		year: certificatesData[0].date,
+		icon: certificatesData[0].icon ?? 'certificate',
+		title: certificatesData[0].title,
+		detail: `${certificatesData[0].issuer} — ${certificatesData[0].description ?? ''}`
 	},
-	{
-		year: '2024',
-		icon: 'cpp',
-		title: 'Calyx System Diagnostic Tool',
-		detail:
-			'Membangun CLI benchmarking disk I/O io_uring dan pengujian latency/throughput jaringan server real-time.'
-	},
-	{
-		year: '2023',
-		icon: 'bnsp',
-		title: 'Sertifikasi BNSP Network Administrator',
-		detail:
-			'Mengantongi sertifikasi kompetensi nasional dalam administrasi dan pemeliharaan infrastruktur jaringan komputer.'
-	}
-];
+	...projectsData.flatMap((project) =>
+		project.milestone
+			? [
+					{
+						year: project.milestone.year,
+						icon: project.milestone.icon,
+						title: project.title,
+						detail: project.milestone.detail
+					}
+				]
+			: []
+	)
+].sort((left, right) => Number(right.year) - Number(left.year));
 
 export const interestsData: InterestItem[] = [
 	{

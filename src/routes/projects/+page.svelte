@@ -109,16 +109,7 @@
 				>
 					{#each section.items as project (project.title)}
 						<li>
-							<ProjectCard
-								variant="card"
-								heading={project.title}
-								subheading={project.description}
-								image={project.image}
-								href={project.href}
-								github={project.github}
-								release={project.release}
-								tags={project.tags}
-							/>
+							<ProjectCard {project} variant="card" />
 						</li>
 					{/each}
 				</ul>
